@@ -1,0 +1,51 @@
+@import "../../styles/var.scss";
+
+.my-order-comment{
+    position: relative;
+    overflow-y: hidden;
+    height: 100%;
+
+    .inputPart{
+        width: 100%;
+        padding: 40px 30px;
+        box-sizing: border-box;
+        border: 0;
+        outline: 0;
+        font-size: $__font-size-large;
+        line-height: $__font-size-large;
+        &::placeholder{
+            line-height: $__font-size-large;
+        }
+    }
+    .btn{
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
+        width:690px;
+        height:96px;
+        margin: 0 auto;
+        background:rgba(214,36,25,1);
+        border-radius:56px;
+        box-sizing: border-box;
+
+        font-size:36px;
+        font-family:PingFangSC-Medium,PingFang SC;
+        font-weight:500;
+        color:rgba(255,255,255,1);
+        line-height:96px;
+        text-align: center;
+    }
+    .count{
+        position: absolute;
+        right: 34px;
+        bottom: 196px;
+        text-align: right;
+        box-sizing: border-box;
+        padding-right: 34px;
+        font-size:24px;
+        font-family:PingFangSC-Regular,PingFang SC;
+        font-weight:400;
+        color:rgba(24,24,26,.5);
+        line-height:34px;
+    }
+}

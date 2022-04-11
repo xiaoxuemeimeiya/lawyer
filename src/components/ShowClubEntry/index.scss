@@ -1,0 +1,30 @@
+@import "../../styles/var.scss";
+
+.ShowClubEntry {
+  .club {
+    display: block;
+    margin: 30px 24px 0;
+    height: 128px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background-image: url(https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/wx_img/my_bg@2x.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    .ll-cell {
+      padding: 0;
+      height: 100%;
+    }
+  }
+  .icon-club-logo2 {
+    display: block;
+    margin-left: 44px;
+  }
+  .club-text {
+    font-size: $__font-size-extra-small;
+    color: #e8d4aa;
+  }
+  .icon-club-arrow {
+    display: block;
+    margin-right: 22px;
+  }
+}

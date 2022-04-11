@@ -1,0 +1,101 @@
+@import "../../styles/var.scss";
+
+.MyOrder {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #f0f1f4;
+
+  .tabs-mycourse {
+    box-sizing: border-box;
+    padding: 0 24px;
+    .at-tabs__item {
+      box-sizing: border-box;
+      padding: 0 24px;
+      height: 96px;
+      line-height: 96px;
+    }
+  }
+
+  /* 订单 */
+  .order {
+    position: relative;
+    margin: 24px;
+    border-radius: 16px;
+
+    & + .order {
+      margin-top: 0;
+    }
+  }
+  .order__hd {
+    padding: 0 24px;
+    height: 82px;
+    font-size: $__font-size-extra-small;
+  }
+  .order-title {
+    color: $__color-text-primary;
+    font-weight: 600;
+  }
+  .order-status {
+    color: $__color-text-regular;
+  }
+  .order-img {
+    width: 128px;
+    height: 96px;
+    margin-right: 20px;
+  }
+  .order-name {
+    font-size: $__font-size-small;
+    color: $__color-text-primary;
+    margin-right: 40px;
+    &.ellipsis-3 {
+      max-height: 105.6px;
+    }
+  }
+  .order-price {
+    font-size: $__font-size-extra-small;
+    color: $__color-text-primary;
+    align-self: center;
+    .order-price__bd {
+      font-size: $__font-size-medium;
+    }
+  }
+  .order-btn {
+    box-sizing: border-box;
+    height: 52px;
+    line-height: 50px;
+    padding: 0 26px;
+    /* prettier-ignore */
+    border: 1PX solid rgba(31, 44, 63, 0.2);
+    border-radius: 26px;
+    background: none;
+    font-size: $__font-size-extra-small;
+    color: $__color-text-primary;
+    & + .order-btn {
+      margin-left: 20px;
+    }
+  }
+  .order-btn--pay {
+    color: $__color-primary;
+    border-color: $__color-primary;
+  }
+  .order__ft {
+    padding-top: 0;
+  }
+
+  .order-status--resolved {
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    top: 10px;
+    width: 114px;
+    height: 114px;
+    background: #fff;
+  }
+  .order-status--resolved__img {
+    width: 100%;
+    height: 100%;
+  }
+}

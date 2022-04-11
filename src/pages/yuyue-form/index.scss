@@ -1,0 +1,114 @@
+@import "../../styles/var.scss";
+.pupopBack {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.pupop-box {
+    z-index:777;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.pupop {
+    position: absolute;
+    // top: 50%;
+    //left: 50%;
+    bottom: 0;
+    //transform: translate(-50%, 0);
+    width: 100%;
+    // height: 840px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 32px 32px 0 0;
+    padding: 80px 120px 0 120px;
+    box-sizing: border-box;
+    .closeIcon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 88px;
+        height: 88px;
+    }
+    .pupop_title {
+        position: relative;
+        .title_icon1 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: -40px;
+            left: 0;
+        }
+        .title_icon2 {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            bottom: 0px;
+            right: 20px;
+        }
+    }
+    .title_text {
+        font-size: 36px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(27, 28, 53, 1);
+        line-height: 50px;
+        text-align: center;
+    }
+    .form {
+        margin-top: 50px;
+        .formItem {
+            width: 500px;
+            height: 80px;
+            background: rgba(255, 255, 255, 1);
+            border-radius: 8px;
+            border: 2px solid rgba(196, 196, 205, 1);
+            margin-bottom: 24px;
+            &:nth-last-of-type(1) {
+                margin-bottom: 0;
+            }
+            .input-box {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding-left: 28px;
+                input {
+                    font-size: 30px;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #1b1c35;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    .unique {
+        width: 400px;
+        height: 96px;
+        margin-top: 52px;
+        background: rgba(214, 36, 25, 1);
+        border-radius: 48px;
+
+        font-size: 32px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 44px;
+    }
+    .close-button{
+        height: 96px;
+        margin-top: 34px;
+        text-align:center;
+        border-radius: 1.024rem;
+        font-size: 30px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #8D8E9A;;
+        line-height: 96px;
+    }
+}

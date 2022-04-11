@@ -1,0 +1,323 @@
+@import "../../styles/var.scss";
+
+.articleDetail {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #fff;
+  .n-display{
+    display:none;
+
+  }
+
+
+  /* 标题 */
+  .article-title {
+    font-size: 48px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #18181A;
+    line-height: 66px;
+  }
+  .collection {
+    padding-left: 10px;
+    font-size: 20px;
+    line-height: 2;
+    text-align: center;
+  }
+  .learn-info {
+    font-size: $__font-size-extra-small;
+  }
+
+  /* 专家信息 */
+  .expert {
+    margin: 20px 24px;
+  }
+  .expert-title {
+    font-size: $__font-size-xl-large;
+    font-weight: 600;
+  }
+  .avatar-expert {
+    margin-right: 20px;
+  }
+  .expert__name {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: $__font-size-base-bigger;
+  }
+  .expert__bd {
+    font-size: $__font-size-extra-small;
+  }
+  .expert__ft {
+    font-size: $__font-size-base;
+    color: $__color-text-primary;
+  }
+  .expert .ll-cell__ft--in-access:after {
+    border-color: $__color-text-primary;
+  }
+  .expert .ll-cell{
+    padding:0;
+  }
+
+  /* 课程介绍-课程目录-评价 */
+  .tabs-course {
+    padding: 0 24px;
+    .at-tabs__item {
+      padding-top: 28px;
+      padding-bottom: 26px;
+    }
+  }
+
+  .course-catalog__hd {
+    margin-right: 24px;
+    text-align: center;
+    font-size: $__font-size-extra-large;
+    color: $__color-text-secondary;
+  }
+  .course-catalog__bd {
+    margin: 12px 0;
+    color: $__color-text-primary;
+    font-size: $__font-size-base-bigger;
+    line-height: 1.6;
+    &.ellipsis-2 {
+      max-height: 96px;
+    }
+  }
+  .icon-play-lists {
+    // display: none;
+    width: 56px;
+    height: 56px;
+  }
+
+  .course-evaluate {
+    margin-top: 20px;
+  }
+  .course-evaluate__hd {
+    padding-right: 20px;
+  }
+  .course-evaluate__name {
+    font-size: $__font-size-extra-small;
+    color: $__font-size-extra-small;
+    padding: 26px 0 10px;
+    .fl{
+      font-size: 24px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(31, 44, 63, 0.5);
+    }
+    .num{
+      float:left;
+      height: 48px;
+      font-size: 24px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #1F2C3F;
+      line-height: 48px;
+      margin-right:20px;
+    }
+  }
+  .course-evaluate__content {
+    color: $__color-text-primary;
+    font-size: $__font-size-base;
+    margin-bottom: 10px;
+    &.ellipsis-2 {
+      max-height: 76.8px;
+    }
+  }
+  .course-evaluate__emptyComment {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    .taro-img {
+      margin: 0 auto;
+      width: 144px;
+      height: 144px;
+    }
+    .text {
+      font-size: 30px;
+      padding-top: 20px;
+      padding-bottom: 100px;
+      color: $__color-text-primary;
+      line-height: 21px;
+    }
+  }
+
+  /* 底部栏 */
+  .bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 112px;
+  }
+  .bottom__bd {
+    height: 100%;
+    padding: 0;
+    input{
+      width: 320px;
+      padding-left:20px;
+      border: 0;
+      outline: 0;
+      -webkit-appearance: none;
+      font-size: inherit;
+      color: inherit;
+      line-height: 64;
+      height: 32px;
+      background: rgba(24,24,26,0.05);
+      border-radius: 40px;
+      margin-left:30px;
+      margin-right:34px;
+    }
+    .comment-num {
+      width: 48px;
+      height: 28px;
+      line-height:28px;
+      background: #D62419;
+      border-radius: 14px;
+      border: 1px solid #FFFFFF;
+      color:#fff;
+      font-size: 20px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      position:absolute;
+      top:0;
+      right:15px;
+    }
+  }
+  .bottom__btn {
+    box-sizing: border-box;
+    width: 96px;
+    text-align: center;
+    background: #fcfcfd;
+    padding:0 48px 0 0;
+    .icon {
+      margin-top: 6px;
+    }
+    .bottom-btn__text {
+      line-height: 1;
+      font-size: $__font-size-smallest;
+      color: $__color-text-primary;
+    }
+  }
+  .btn-learn-now {
+    margin: 0 auto;
+    width: 372px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 40px;
+    font-size: $__font-size-medium;
+  }
+
+  /* 固定 */
+  .tabsFixed {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0px 20px 80px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .club-entry {
+    display: block;
+    width: 702px;
+    height: unset;
+    margin: 0 24px 20px;
+  }
+
+  /* 分享提示 */
+  .share-tip {
+    position: absolute;
+    width: 352px;
+    height: 78px;
+    top: -76px;
+    left: 18px;
+  }
+
+  .m80 {
+    margin-bottom: 80px;
+  }
+
+  .commentBanner{
+    background: rgba(0,0,0,0.5);
+    position:fixed;
+    height:100%;
+    width:100%;
+    bottom:0;
+    .commentContent{
+      position:absolute;
+      width: 100%;
+      height: 97%;
+      background: #FFFFFF;
+      border-radius: 32px 32px 0px 0px;
+      bottom:0;
+      .commentHeader{
+        .commentCancel{
+          height: 48px;
+          font-size: 30px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(24,24,26,0.7);
+          line-height: 48px;
+          margin:30px;
+          float:left;
+        }
+        .commentSubmit{
+          width: 96px;
+          height: 48px;
+          line-height: 48px;
+          background: #D62419;
+          border-radius: 24px;
+          font-size: 26px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #FFFFFF;
+          text-align:center;
+          float:right;
+          margin:30px;
+        }
+        .content{
+          clear:both;
+          padding:30px;
+          Textarea{
+            height:400px;
+            width:100%;
+            border:none;
+          }
+        }
+      }
+    }
+  }
+
+  .shareBanner{
+    background: rgba(0,0,0,0.5);
+    position:fixed;
+    height:100%;
+    width:100%;
+    bottom:0;
+    .shareContent{
+      position:absolute;
+      width: 100%;
+      height: 30%;
+      background: #FFFFFF;
+      border-radius: 32px 32px 0px 0px;
+      bottom:0;
+      padding:50px;
+      .shareList{
+        display:inline-block;
+        .shareIcon{
+          margin:50px;
+          width:112px;
+          height:112px;
+        }
+        .shareTitle{
+          text-align:center;
+        }
+      }
+    }
+  }
+}

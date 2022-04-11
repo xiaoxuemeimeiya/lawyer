@@ -1,0 +1,289 @@
+@import "../../styles/var.scss";
+
+.videoVipBuy {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  .videoVip__top {
+    position: relative;
+    margin-bottom: 120px;
+    .top__background {
+      width: 100%;
+      height: unset;
+    }
+    .btn--black {
+      position: absolute;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      padding: 0;
+      border: none;
+    }
+  }
+  .sixPrivilege {
+    padding-top: 36px;
+    padding-bottom: 120px;
+  }
+  .discountCourse {
+    width: 224%;
+    padding-top: 40px;
+    padding-bottom: 120px;
+    animation: 7s autoImg linear infinite normal;
+    .courseItem {
+      display: flex;
+      .imgs {
+        width: 214px;
+        height: 159px;
+        margin: 7px 6px;
+        border-radius: 10px;
+      }
+    }
+    .course2 {
+      transform: translateX(-100px);
+    }
+  }
+  .vipFree {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 36px;
+    padding-top: 40px;
+    padding-bottom: 120px;
+    .navigatorLable {
+      &:nth-last-child(1),
+      &:nth-last-child(2) {
+        .vipFree__item {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .vipFree__item {
+      width: 318px;
+      background: rgba(255, 251, 246, 1);
+      border-radius: 8px;
+      border: 2px solid rgba(230, 222, 214, 1);
+      margin-bottom: 40px;
+      .img {
+        border-radius: 8px 8px 0 0;
+        width: 100%;
+        // width:318px;
+        height: unset;
+        height: 238px;
+      }
+      .vipFree__content {
+        padding-left: 20px;
+        padding-right: 8px;
+        padding-bottom: 22px;
+        .title {
+          font-size: 26px;
+          padding-top: 20px;
+          padding-bottom: 8px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(27, 28, 53, 1);
+          line-height: 36px;
+        }
+        .else {
+          display: flex;
+          align-items: center;
+          .prize {
+            font-size: 26px;
+            font-family: DINAlternate-Bold, DINAlternate;
+            font-weight: bold;
+            color: rgba(141, 142, 154, 1);
+            line-height: 30px;
+          }
+          .redText {
+            font-size: 26px;
+            padding-left: 12px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: rgba(232, 46, 35, 1);
+            line-height: 36px;
+          }
+        }
+      }
+    }
+  }
+  .courseFree {
+    padding-top: 40px;
+    padding-bottom: 120px;
+    .swiper-container {
+      width: 640px;
+      height: 420px;
+      margin: 0 auto;
+      padding-bottom: 120px;
+      transform: translateZ(0);
+      .swiper-wrapper {
+        display: flex;
+        align-items: center;
+      }
+      .swiper-slide {
+        height: 203px !important;
+        position: relative;
+      }
+      .swiper-slide-active {
+        .swiper__img {
+          transform: scale(1.4);
+        }
+        .swiper__docs {
+          opacity: 1;
+        }
+      }
+      .swiper-slide-prev,
+      .swiper-slide-next {
+        .swiper__img {
+          transform: scale(1.15);
+          // z-index: 11;
+          // transition: all 0.3s;
+        }
+      }
+      .swiper__docs {
+        opacity: 0;
+        position: absolute;
+        left: 50%;
+        bottom: -206px;
+        transform: translateX(-50%);
+      }
+      .swiper__img {
+        width: 100%;
+        height: unset;
+        border-radius: 8px;
+        width: 152px;
+        height: 203px;
+      }
+    }
+
+    .course__title {
+      width: 380px;
+      height: 84px;
+      margin: 0 auto;
+      padding-top: 30px;
+      // padding-bottom: 20px;
+      margin-bottom: 20px;
+      font-size: 30px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: rgba(27, 28, 53, 1);
+      line-height: 42px;
+      text-align: center;
+    }
+    .course__subhead {
+      height: 34px;
+      text-align: center;
+      font-size: 24px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(27, 28, 53, 0.7);
+      line-height: 34px;
+    }
+  }
+  .notice {
+    padding: 120px 24px 260px;
+    .notice__main {
+      font-size: 32px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: rgba(3, 3, 3, 1);
+      line-height: 44px;
+    }
+    .notice__subhead {
+      width: 512px;
+      height: 34px;
+      font-size: 24px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(94, 94, 103, 1);
+      line-height: 34px;
+    }
+  }
+  .btn__open {
+    width: 688px;
+    height: 100px;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: fixed;
+    left: 50%;
+    bottom: 132px;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 0 50px;
+    .btn_background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: unset;
+      z-index: 0;
+    }
+    .textImg {
+      width: 160px;
+      height: unset;
+    }
+    .textImg,
+    .ll-cell__bd,
+    .ll-cell__ft {
+      z-index: 1;
+    }
+    .ll-cell__bd {
+      padding-left: 20px;
+      font-size: 30px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: rgba(249, 230, 211, 1);
+      line-height: 42px;
+    }
+    .ll-cell__ft {
+      font-size: 30px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: rgba(82, 49, 15, 1);
+      line-height: 42px;
+    }
+  }
+}
+
+.Chunktitle {
+  .title__main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .text {
+      font-size: 40px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: rgba(3, 3, 3, 1);
+      line-height: 56px;
+      padding: 0 14px;
+    }
+    .icon {
+      width: 32px;
+      height: 14px;
+    }
+  }
+  .title__subhead {
+    margin-top: 8px;
+    font-size: 24px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(141, 142, 154, 1);
+    line-height: 34px;
+    text-align: center;
+  }
+}
+
+@keyframes autoImg {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}

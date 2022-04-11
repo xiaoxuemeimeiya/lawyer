@@ -1,0 +1,23 @@
+@import "./var.scss";
+
+@import "./ll.scss";
+@import "./tt.scss";
+@import "./ll-ellipsis.scss";
+@import "./ll-divider.scss";
+@import "./ll-onepx.scss";
+
+/* 引入taro-ui组件库 */
+@import "./var-theme.scss";
+@import "~taro-ui/dist/style/components/tabs.scss";
+@import "~taro-ui/dist/style/components/action-sheet.scss";
+@import "~taro-ui/dist/style/components/activity-indicator.scss";
+@import "~taro-ui/dist/style/components/loading.scss";
+@import "~taro-ui/dist/style/components/modal.scss";
+@import "~taro-ui/dist/style/components/switch.scss";
+@import "./theme.scss";
+
+/* 项目公用 */
+@import "./icon.scss";
+@import "./common.scss";
+
+// @import "./fonts.scss";

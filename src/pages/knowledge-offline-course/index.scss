@@ -1,0 +1,85 @@
+@import "../../styles/var.scss";
+
+.KnowledgeOnlineCourse {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #ecedee;
+
+  .online-title {
+    height: 190px;
+    box-sizing: border-box;
+    padding: 30px 0;
+    overflow: hidden;
+    z-index: 2;
+  }
+  .hdBanner {
+    position: relative;
+    .applyList {
+      position: absolute;
+      left: 20px;
+      bottom: 24px;
+      display: flex;
+      align-items: center;
+    }
+    .headList {
+      display: flex;
+      margin-right: 34px;
+      > div {
+        &:nth-child(1) {
+          z-index: 3;
+        }
+        &:nth-child(2) {
+          z-index: 2;
+        }
+        &:nth-child(3) {
+          z-index: 1;
+        }
+      }
+      .headImg {
+        width: 24px;
+        height: 48px;
+        position: relative;
+        overflow: unset;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 48px;
+          width: 48px;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+.label--freeIcon-vip {
+  padding: 4px 0;
+  font-size: 20px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(82, 49, 15, 1);
+  width:122px;
+  height:30px;
+  display:inline-block;
+  img{
+    width:100%;
+  }
+}
+.media__price {
+  .normal_price {
+    margin-right: 26px;
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-weight: bold;
+  }
+  .vip_price {
+    font-size: 32px;
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-weight: bold;
+    color: #2B2B36;
+    margin-right: 26px;
+  }
+}

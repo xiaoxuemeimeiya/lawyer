@@ -1,0 +1,172 @@
+@import "../../styles/var.scss";
+
+.videoVipBuy {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  .sixPrivilege {
+    border-radius: 16px;
+    .buySubmit-list{
+      width:100%;
+       .img{
+         width:100%;
+         height:auto;
+       }
+    }
+  }
+  .buySubmit-phone {
+    padding-top:47px;
+    border-radius:16px;
+    .text{
+      margin-left:5px;
+      font-size: 48px;
+      line-height: 45px;
+      font-family: Alibaba PuHuiTi;
+      font-weight: bold;
+      color: #1B1817;
+      text-align:center;
+      display:block;
+      margin-bottom:60px;
+    }
+    .sixVipPrivilege{
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      .item {
+        width: 33.3%;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 50px;
+        .img {
+          width: 88px;
+          height: 80px;
+          margin: 0 auto;
+          img{
+            width: auto;
+            height: 64px;
+          }
+        }
+        .text {
+          font-size: 24px;
+          font-family: Source Han Sans CN;
+          font-weight: 400;
+          color: rgba(22, 20, 19, 1);
+          line-height: 30px;
+        }
+        .text-vip {
+          font-size: 24px;
+          font-weight: 400;
+          color: #1B1817;
+        }
+        .gray-vip {
+          font-size: 22px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          line-height: 0.64rem;
+          color: #757575;
+        }
+      }
+    }
+    .free_card{
+      margin:80px;
+      height: 88px;
+      background: #D62419;
+      line-height:88px;
+      border-radius: 44px;
+      text-align:center;
+      font-size: 36px;
+      font-family: Alibaba PuHuiTi;
+      font-weight: bold;
+      color: #FFFFFF;
+    }
+  }
+  /* 底部栏 */
+  .bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 112px;
+    .btn{
+      border-radius:0;
+    }
+  }
+  .bottom__bd {
+    height: 100%;
+    padding: 0;
+  }
+  .bottom__btn {
+    height: 112px;
+    line-height: 112px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    background: $__color-primary;
+    color: #ffffff;
+    white-space: nowrap;
+    font-size: $__font-size-medium;
+    font-weight: 600;
+  }
+  .price {
+    padding-left: 30px;
+    font-size: 48px;
+    color: $__color-primary;
+    font-weight: 600;
+    .small {
+      font-size: $__font-size-base-bigger;
+    }
+  }
+
+  .ll-input {
+    font-size: $__font-size-base-bigger;
+    color: $__color-text-primary;
+  }
+}
+.careGzh{
+  top:0;
+  position: fixed;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.8);
+  .GzhErcode{
+    position: absolute;
+    width:384px;
+    height:384px;
+    left:50%;
+    top:50%;
+    margin-left:-192px;
+    margin-top:-192px;
+    .ercode{
+      width:100%;
+      height:100%;
+    }
+  }
+}
+
+
+
+@keyframes autoImg {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}

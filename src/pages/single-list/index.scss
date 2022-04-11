@@ -1,0 +1,24 @@
+// 专家服务
+.single-list {
+    background-color: #f0f1f4;
+    padding-top: 20px;
+    height: 100%;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    .tt-cell-box {
+        .tt-cell__img {
+            height: 330px;
+        }
+        .tt-cell__info {
+            height: 126px;
+            font-size: 26px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: rgba(24, 24, 26, 1);
+            line-height: 36px;
+            padding-left: 20px;
+            padding-top: 14px;
+            background-color: #fff;
+        }
+    }
+}

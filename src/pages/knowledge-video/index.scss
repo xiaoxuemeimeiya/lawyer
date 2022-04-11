@@ -1,0 +1,86 @@
+@import "../../styles/var.scss";
+
+.KnowledgeVideo {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #fff;
+
+  /* 视频 */
+  .video-box {
+    width: 100%;
+    height: 420px;
+  }
+
+  /* 标题 */
+  .video-title {
+    font-size: $__font-size-large;
+    color: $__color-text-primary;
+    font-weight: 600;
+    &.ellipsis-2 {
+      max-height: 96px;
+    }
+  }
+  .share-btn {
+    margin-left: 22px;
+    height: 100%;
+    margin-top: 4px;
+  }
+  .share-btn__text {
+    font-size: $__font-size-extra-small;
+    color: $__color-text-primary;
+    margin-top: 4px;
+  }
+  .video-num {
+    color: $__color-text-secondary;
+    font-size: $__font-size-extra-small;
+    padding: 0 24px;
+  }
+
+  /* 目录 */
+  .video-catalog {
+    margin-top: 30px;
+    position: relative;
+    &::before {
+      content: " ";
+      position: absolute;
+      left: 20px;
+      top: 0;
+      right: 20px;
+      height: 1px;
+      border-top: 1px solid #f0f0f0;
+      color: #f0f0f0;
+    }
+    &:after {
+      content: " ";
+      position: absolute;
+      left: 20px;
+      bottom: 0;
+      right: 20px;
+      height: 1px;
+      border-bottom: 1px solid #f0f0f0;
+      color: #f0f0f0;
+    }
+  }
+  .course-catalog__hd {
+    margin-right: 24px;
+    text-align: center;
+    font-size: $__font-size-extra-large;
+    color: $__color-text-secondary;
+  }
+  .course-catalog__bd {
+    margin: 12px 0;
+    color: $__color-text-primary;
+    font-size: $__font-size-base-bigger;
+    line-height: 1.6;
+    &.ellipsis-2 {
+      max-height: 96px;
+    }
+  }
+  .icon-play-lists {
+    width: 56px;
+    height: 56px;
+  }
+}

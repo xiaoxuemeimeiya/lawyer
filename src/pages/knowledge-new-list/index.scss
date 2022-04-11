@@ -1,0 +1,64 @@
+@import "../../styles/var.scss";
+
+.New {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #ecedee;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  .content--box {
+    flex: 1;
+    overflow-y: scroll;
+  }
+  .time {
+    overflow: hidden;
+    position: relative;
+    background: none;
+  }
+  .time__bd {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    height: 280px;
+    background: linear-gradient(180deg, rgba(214, 36, 25, 1) 0%, rgba(230, 82, 63, 1) 100%);
+    color: #ffffff;
+  }
+  .time__day {
+    font-size: $__font-size-xl-large;
+    font-weight: bold;
+  }
+  .time__month {
+    font-size: $__font-size-base;
+    font-weight: bold;
+  }
+  .time__info {
+    font-size: $__font-size-base;
+  }
+  .time__icon {
+    width: 148px;
+    height: 80px;
+  }
+
+  .time__ft {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 30px;
+    background: #f0f1f4;
+    border-radius: 32px 32px 0px 0px;
+  }
+
+  .new-titlte {
+    font-size: $__font-size-base;
+    color: $__color-text-regular;
+    line-height: 3;
+    padding-left: 30px;
+    padding-top: 4px;
+  }
+}

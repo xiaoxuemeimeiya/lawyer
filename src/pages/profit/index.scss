@@ -1,0 +1,142 @@
+@import "../../styles/var.scss";
+
+.Profit {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #f0f1f4;
+
+  /* 余额 */
+  .card-box {
+    box-sizing: border-box;
+    padding: 20px 20px 0;
+  }
+  .card {
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+    height: 410px;
+    background: url("https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/wx_img/pic_stored_bg2@2x.png");
+    background-position: top center;
+    background-size: 104% 108%;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    border-radius: 32px;
+    overflow: hidden;
+  }
+  .card .ll-cell {
+    padding-left: 50px;
+    padding-right: 50px;
+    .ll-cell__ft.ll-cell__ft--in-access {
+      color: #ffffff;
+    }
+    .ll-cell__ft--in-access:after {
+      border-color: #fff;
+    }
+  }
+
+  .card__hd {
+    padding-top: 62px;
+    padding-bottom: 0;
+  }
+  .card-title {
+    font-size: $__font-size-medium;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .card-total {
+    font-size: 80px;
+    font-weight: bold;
+  }
+  .card-info {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: $__font-size-extra-small;
+    line-height: 2.4;
+  }
+  .card-btn {
+    display: inline-block;
+    margin-top: 24px;
+    width: auto;
+    line-height: 1.2;
+    padding: 12px 42px;
+    border-radius: 56px;
+    font-size: $__font-size-base-bigger;
+    color: $__color-primary;
+    background: #fff;
+  }
+
+  /* 明细 */
+  .detail {
+    background: none;
+  }
+  .detail-title {
+    font-size: $__font-size-large;
+    font-weight: 600;
+  }
+  .detail-acount {
+    font-size: $__font-size-small;
+    color: $__color-text-primary;
+  }
+
+  .card-item {
+    margin: 24px;
+    display: block;
+    border-radius: 16px;
+    & + card-item {
+      margin-top: 0;
+    }
+
+    .card-title {
+      font-size: $__font-size-medium;
+      color: $__color-text-primary;
+    }
+    .card-time {
+      font-size: $__font-size-extra-small;
+      color: $__color-text-secondary;
+      line-height: 1.6;
+    }
+    .card-num {
+      font-size: $__font-size-extra-large;
+      font-weight: bold;
+      color: $__color-primary;
+    }
+    .card-num__status {
+      font-size: $__font-size-extra-small;
+    }
+  }
+
+  /* 模态框 */
+  .at-modal__container {
+    border-radius: 32px;
+    width: 76%;
+  }
+  .model {
+    padding: 40px 30px 60px;
+  }
+  .model-title {
+    font-size: $__font-size-extra-large;
+    color: $__color-text-primary;
+    font-weight: 600;
+  }
+  .model-content {
+    padding-top: 40px;
+    font-size: $__font-size-base-bigger;
+    font-weight: 400;
+    text-align: justify;
+    .strong {
+      display: inline;
+    }
+  }
+  .model-btn {
+    display: block;
+    width: 320px;
+    margin: 40px auto 0;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 56px;
+    font-size: $__font-size-medium;
+  }
+}

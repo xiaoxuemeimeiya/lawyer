@@ -1,0 +1,701 @@
+@import "./var.scss";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-overflow-scrolling: touch; /* 当手指从触摸屏上移开，会保持一段时间的滚动 */
+}
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: #333;
+}
+a:hover {
+  color: $__color-primary;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  zoom: 1;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.hide {
+  display: none !important;
+}
+.strong {
+  font-weight: bold;
+}
+.tl {
+  text-align: left;
+}
+.lucency {
+  opacity: 0;
+}
+
+/* 全局 */
+#app,
+.taro_router,
+.taro_page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* 字体颜色 */
+.color-text-primary {
+  color: $__color-text-primary;
+}
+.color-text-regular {
+  color: $__color-text-regular;
+}
+.color-text-secondary {
+  color: $__color-text-secondary;
+}
+
+.color-primary {
+  color: $__color-primary;
+}
+
+/* placeholder */
+::-webkit-input-placeholder {
+  color: $__color-text-secondary;
+  font-size: 26px;
+}
+
+/* 标题栏 */
+.title-box {
+  background: none;
+  .title {
+    font-size: 48px;
+    color: $__color-text-regular;
+    font-weight: 600;
+  }
+  .ll-cell__ft {
+    font-size: $__font-size-base;
+  }
+}
+
+/* 媒体 */
+.media {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 24px;
+  background: none;
+  & + .media {
+    margin-top: 24px;
+  }
+}
+.media__bd {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.media__img {
+  width: 256px;
+  height: 196px;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+.media .ll-cell__bd {
+  min-width: 2px;
+}
+.course_price{
+  position:absolute;
+  bottom:20px;
+}
+.media__title {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: $__color-text-primary;
+}
+.media__title.ellipsis-2 {
+  //height: 84px;
+}
+.media__small {
+  font-size: $__font-size-extra-small;
+  color: $__color-text-regular;
+  margin-bottom: 28px;
+  height: 33.6px;
+}
+.media__ft {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  font-size: $__font-size-extra-small;
+  color: $__color-text-regular;
+}
+.media__name {
+  flex: 1;
+}
+.media__price {
+  flex: 1;
+  font-size: $__font-size-base;
+  color: $__color-primary;
+  span {
+    font-size: $__font-size-extra-large;
+  }
+}
+.media__tag {
+  display: inline-block;
+  &:not(:first-child)::before {
+    content: "·";
+    display: inline-block;
+    width: 16px;
+    text-align: center;
+  }
+}
+
+.media-offline .media__bd {
+  flex-wrap: wrap;
+}
+.media-offline .ll-cell__hd {
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-top: -20px;
+  display: block;
+  width: calc(100% + 48px);
+  height: 344px;
+}
+.media-offline .media__img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+.media-offline .media__small {
+  height: auto;
+}
+.media-offline .media__title {
+  margin: 20px 0 10px;
+}
+
+/* 底部导航栏 */
+.tabbar {
+  // position: fixed;
+  // left: 0;
+  // bottom: 0;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  z-index: 10;
+  &::after {
+    display: none;
+  }
+}
+.tabbar__bd {
+  padding: 0 20px;
+  height: 100%;
+}
+.tabbar__title {
+  font-size: $__font-size-smallest;
+}
+
+/* 头像 */
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* 富文本显示 */
+.rich-text {
+  width: 100%;
+  // max-width: 100%;
+  img {
+    max-width: 750px;
+  }
+}
+
+/* 按钮 */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 400px;
+  height: 80px;
+  background: rgba(214, 36, 25, 1);
+  border-radius: 40px;
+}
+.btn {
+  display: inline-block;
+  padding: 0 28px;
+  border-radius: 0;
+  margin: 0;
+  font-size: 26px;
+  line-height: 2.15;
+  outline: none;
+  border-width: 0;
+}
+.btn::after {
+  display: none;
+}
+.btn-primary {
+  background: #d62419;
+  color: #fff;
+}
+.btn-primary:hover,
+.btn-primary.button-hover {
+  background: #c42119;
+}
+.btn-primary--large {
+  display: block;
+  height: 96px;
+  line-height: 96px;
+  border-radius: 56px;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-align: center;
+  background: #d62419;
+  color: #fff;
+}
+.btn-primary--large:active,
+.btn-primary--large.button-hover {
+  background: #c42119;
+}
+.btn-primary--hover {
+  background: #c42119;
+}
+
+/* 查看更多按钮 */
+.btn-see-more {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  color: #18181a;
+  background: #f3f3f3;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 40px;
+  text-align: center;
+}
+.icon-more {
+  width: 20px;
+  height: 28px;
+  vertical-align: -4px;
+  margin-left: 4px;
+}
+
+/* ActionSheet 动作面板 */
+.action-title {
+  position: relative;
+  padding: 38px 24px;
+  .ll-cell__bd {
+    font-size: $__font-size-large;
+    color: $__color-text-primary;
+  }
+  .ll-cell__ft {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    line-height: 128px;
+    text-align: right;
+    padding-right: 24px;
+    z-index: 2;
+  }
+}
+.action-item {
+  box-sizing: border-box;
+  height: 120px;
+  font-size: $__font-size-base-bigger;
+  color: $__color-text-secondary;
+  .ll-cell__bd {
+    text-align: left;
+  }
+  .action-item__price {
+    color: $__color-primary;
+    font-weight: 600;
+  }
+  .ll-cell__ft {
+    max-width: 80%;
+  }
+}
+.action-btn {
+  margin-bottom: 10px;
+}
+
+/* 空提示 */
+.null-tip {
+  padding-top: 192px;
+  text-align: center;
+  font-size: $__font-size-base-bigger;
+}
+.null-tip .null-tip__img {
+  display: inline-block;
+  width: 144px;
+  height: 144px;
+}
+.null-tip .null-tip__btn {
+  display: inline-block;
+  margin-top: 50px;
+  height: 80px;
+  line-height: 80px;
+  padding: 0 80px;
+  font-size: $__font-size-base-bigger;
+}
+
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .content--box {
+    flex: 1;
+    overflow-y: scroll;
+
+    .content__scroll {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+    }
+  }
+}
+
+.videoVip {
+  .Chunktitle {
+    .title__main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .text {
+        font-size: 40px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: rgba(3, 3, 3, 1);
+        line-height: 56px;
+        padding: 0 14px;
+      }
+      .icon {
+        width: 32px;
+        height: 14px;
+      }
+    }
+    .title__subhead {
+      margin-top: 8px;
+      font-size: 24px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(141, 142, 154, 1);
+      line-height: 34px;
+      text-align: center;
+    }
+  }
+
+  .content--box {
+    flex: 1;
+    overflow-y: scroll;
+
+    .content__scroll {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+    }
+  }
+  .box-center {
+    text-align: center;
+  }
+  .videoCardBanner {
+    width: 702px;
+    height: 88px;
+    margin: 0 auto;
+  }
+  .couponList {
+    padding: 38px 22px 118px;
+    .main__couponItem {
+      height: 164px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-bottom: 18px;
+      // padding-right: 42px;
+      .coupon__background {
+        position: absolute;
+        width: 100%;
+        height: unset;
+        z-index: 0;
+      }
+      .money,
+      .coupon__docs,
+      .btn {
+        z-index: 1;
+      }
+      .money {
+        width: 171px;
+        display: flex;
+        flex-direction: column;
+        line-height: 46px;
+        text-align: center;
+        .money__main {
+          font-size: 48px;
+          font-family: DINCondensed-Bold, DINCondensed;
+          font-weight: bold;
+          color: rgba(82, 49, 15, 1);
+        }
+        .small {
+          font-size: 24px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(82, 49, 15, 1);
+        }
+      }
+      .coupon__docs {
+        padding-left: 34px;
+        flex: 1;
+        .docs__mian {
+          font-size: 32px;
+          font-family: PingFangSC-Semibold, PingFang SC;
+          font-weight: 600;
+          color: rgba(27, 28, 53, 1);
+          line-height: 44px;
+        }
+        .docs__subhead {
+          margin-top: 8px;
+          font-size: 24px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(141, 142, 154, 1);
+          line-height: 34px;
+        }
+      }
+      .btn {
+        width: 120px;
+        height: 60px;
+        padding: 0;
+        background: linear-gradient(133deg, rgba(255, 233, 202, 1) 0%, rgba(234, 187, 141, 1) 100%);
+        box-shadow: 0px 2px 2px 0px rgba(255, 255, 255, 0.5);
+        border-radius: 30px;
+        margin-right: 42px;
+        font-size: 24px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(82, 49, 15, 1);
+        line-height: 60px;
+        text-align: center;
+      }
+      .coupon--took {
+        width: 164px;
+        height: unset;
+        transform: translate(-24px, -20px);
+      }
+    }
+  }
+  .btn {
+    border-radius: 32px;
+    padding: 10px 24px;
+    border: 2px solid rgba(255, 255, 255, 1);
+
+    font-size: 24px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 34px;
+  }
+  .btn--black {
+    width: 496px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(65, 53, 49, 1) 0%, rgba(16, 15, 15, 1) 100%);
+    box-shadow: 0px 10px 8px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 40px;
+
+    font-size: 30px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 80px;
+    text-align: center;
+  }
+  .sixPrivilege {
+    display: flex;
+    flex-wrap: wrap;
+    .item {
+      //width: 33%;
+      width:25%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 30px;
+      .img {
+        width: 88px;
+        height: 88px;
+        margin: 0 auto;
+      }
+      .text {
+        font-size: 24px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(22, 20, 19, 1);
+        line-height: 30px;
+      }
+    }
+  }
+  .banner1 {
+    position: relative;
+    width: 702px;
+    height: 192px !important;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: unset;
+      z-index: 0;
+    }
+    .banner1__left,
+    .banner1__right {
+      z-index: 2;
+    }
+    .banner1__left {
+      display: flex;
+      flex-direction: column;
+      .mian__docs {
+        font-size: 40px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: rgba(249, 230, 211, 1);
+        line-height: 56px;
+        letter-spacing: 1px;
+      }
+      .subhead__docs {
+        font-size: 28px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(249, 230, 211, 0.7);
+        line-height: 40px;
+      }
+    }
+    .banner1__right {
+      width: 164px;
+      height: 66px;
+      background: linear-gradient(133deg, rgba(255, 233, 202, 1) 0%, rgba(234, 187, 141, 1) 100%);
+      box-shadow: 0px 2px 2px 0px rgba(255, 255, 255, 0.5);
+      border-radius: 32px;
+
+      font-size: 30px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: rgba(22, 21, 20, 1);
+      line-height: 66px;
+      text-align: center;
+    }
+  }
+  .label--freeForVip {
+    display: inline-block;
+    padding: 2px 6px;
+    margin-bottom: 16px;
+    background: rgba(249, 230, 211, 1);
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    border: 1px solid rgba(237, 194, 150, 1);
+
+    font-size: 20px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(82, 49, 15, 1);
+    line-height: 28px;
+  }
+
+  .label--freeForVip--Discount {
+    margin-bottom: 0;
+  }
+  .label--freeForVip--active{
+    font-size: 26px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #8D8E9A;
+    margin-left:20px;
+  }
+
+  .price--hot {
+    font-size: 30px;
+    padding-right: 12px;
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-weight: bold;
+    color: rgba(214, 36, 25, 1);
+    line-height: 34px;
+  }
+  .btn-more {
+    width: 702px;
+    min-width: 702px;
+    height: 72px;
+    min-height: 72px;
+    margin: 40px auto 60px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 36px;
+
+    width: 114px;
+    height: 40px;
+    font-size: 28px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(214, 36, 25, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.right-corner {
+  position: relative;
+}
+.right-corner:after {
+  content: " ";
+  display: inline-block;
+  /* prettier-ignore */
+  height: 6PX;
+  /* prettier-ignore */
+  width: 6PX;
+  /* prettier-ignore */
+  border-width: 1PX 1PX 0 0;
+  border-style: solid;
+  -webkit-transform: translateY(-50%) matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  transform: translateY(-50%) matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  /* prettier-ignore */
+  right: -20px;
+}
+
+.padding0 {
+  padding: 0;
+  img {
+    width: 100%;
+  }
+}
+
+.box-center {
+  text-align: center;
+}

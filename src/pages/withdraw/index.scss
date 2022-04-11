@@ -1,0 +1,46 @@
+@import "../../styles/var.scss";
+
+.Withdraw {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+
+  .withdraw-title {
+    padding: 60px 0 20px 24px;
+    font-size: 56px;
+    color: $__color-text-primary;
+    font-weight: 600;
+  }
+  .withdraw-icon {
+    font-size: 40px;
+    color: $__color-text-primary;
+    margin-right: 16px;
+  }
+  .withdraw-input {
+    font-size: $__font-size-extra-large;
+    color: $__color-text-primary;
+    font-weight: 600;
+    &::placeholder {
+      font-size: $__font-size-extra-large;
+      color: $__color-text-secondary;
+      font-weight: 600;
+    }
+  }
+
+  .withdraw-info {
+    font-size: $__font-size-base-bigger;
+    color: $__color-text-primary;
+  }
+  .withdraw-all {
+    padding: 12px;
+    padding-right: 0;
+    font-size: $__font-size-base-bigger;
+    color: $__color-primary;
+  }
+
+  .withdraw-btn {
+    padding-top: 140px;
+  }
+}

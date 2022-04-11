@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="format-detection" content="telephone=no,address=no">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <script>
+    !function (x) {
+      function w() {
+        var v, u, t, tes, s = x.document, r = s.documentElement, a = r.getBoundingClientRect().width;
+        if (!v && !u) {
+          var n = !!x.navigator.appVersion.match(/AppleWebKit.*Mobile.*/); v = x.devicePixelRatio; tes = x.devicePixelRatio; v = n ? v : 1, u = 1 / v
+        }
+        if (a >= 640) {
+          r.style.fontSize = a / 320 * 20 + "px"
+        } else {
+          if (a <= 320) {
+            r.style.fontSize = "20px"
+          } else {
+            r.style.fontSize = a / 320 * 20 + "px"
+          }
+        }
+      }
+      x.addEventListener("resize", function () { w() }); w()
+    }(window);
+  </script>
+  <!-- 百度统计 -->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?13245622e44685b46219e0c6dff6419a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+    var Ip=returnCitySN.cip;
+    (function(){
+      locationByIp()
+      localStorage.setItem('scan_time',(Date.parse(new Date()) / 1000))
+      //定义用户是否刚进来
+      localStorage.setItem('active_time',0)
+    })();
+    //localStorage.setItem('Ip', Ip);
+    showError=(error)=>{
+      //locationByIp();
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          alert("定位失败,用户拒绝请求地理定位");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("定位失败,位置信息是不可用");
+          break;
+        case error.TIMEOUT:
+          alert("定位失败,请求获取用户位置超时");
+          break;
+        case error.UNKNOWN_ERROR:
+          alert("定位失败,定位系统失效");
+          break;
+      }
+    };
+    function locationByIp() {
+      //var localtion={};
+      //localtion.ip = returnCitySN.cip;
+      // 通过百度api获得经纬度
+      $.getJSON("https://api.map.baidu.com/location/ip?callback=?", {
+        //'ak' : 'lApvxfMWyOB9So5CZUOupRGg7wLYlbGx',
+        'ak' : 'pAOdagKdU1W1uVeA6XCL05AQ',
+        'coor' : 'bd09ll',
+        //'ip' : localtion.ip
+        'ip' : Ip
+      }, function(data) {//console.log(data.content.address_detail.province)
+        console.log(data.content)
+        console.log(data.content.address_detail.province)
+        localStorage.setItem('province', data.content.address_detail.province);
+        localStorage.setItem('city', data.content.address_detail.city);
+        localStorage.setItem('ip', Ip);
+        //localtion.province = data.content.address_detail.province;
+        //localtion.city = data.content.address_detail.city;
+        //localtion.district = data.content.address_detail.district;
+       // x1.innerHTML=JSON.stringify(data.content);
+      });
+
+    }
+  </script>
+  <!-- 骨架屏 -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .Skeleton {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      z-index: -1;
+    }
+
+    .Skeleton .base {
+      height: 10px;
+      background-image: linear-gradient(to right, rgb(90, 85, 85) , rgb(202, 202, 187));
+      animation: act 2s infinite;
+      transition: all 2s;
+      opacity: .2;
+    }
+
+    .Skeleton .flex {
+      display: flex;
+      margin: 20px 0;
+    }
+
+    .Skeleton .text {
+      width: 50px;
+      height: 20px;
+      margin-right: 20px;
+    }
+
+    .Skeleton .mean {
+      flex: 1;
+      margin-right: 20px;
+      height: 40px;
+    }
+
+    .Skeleton .mean:nth-last-child(1) {
+      margin-right: 0;
+    }
+
+    .Skeleton .item1 {
+      height: 30px;
+      border-radius: 15px;
+    }
+
+    .Skeleton .item2 {
+      height: 100px;
+      border-radius: 10px;
+    }
+
+    .Skeleton .title {
+      width: 100px;
+      height: 30px;
+      margin: 10px 0;
+    }
+
+    @keyframes act {
+      0% {
+        opacity: .2;
+      }
+
+      50% {
+        opacity: .4;
+      }
+
+      100% {
+        opacity: .2;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 音频 -->
+    <div id="musicPlayer" class="musicPlayer musicOut" style="display: none;">
+      <div class="main">
+        <img src="" class="main__background" alt="">
+        <div class="main__control">
+          <img class="main__control__background"
+               src="http://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv1.2/circle.png" class="main__control__start"
+               alt="">
+          <div class="pause iconfont main__control__pause icon-icon_play">
+            <img class="playingStatus" src="http://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv1.2/musicPlaying.gif" alt="">
+          </div>
+        </div>
+        <div class="main__musicInfo">
+          <div class="main__musicInfo__name ellipsis">------------</div>
+          <div class="main__musicInfo__schedule">
+            <span class="now"></span>
+            <span>/</span>
+            <span class="count"></span>
+          </div>
+        </div>
+        <div class="main__open iconfont icon-shuangshangjiantou-"></div>
+        <!--<div class="main__catalog iconfont icon-chakantiezigengduo"></div>-->
+        <div class="main__colse iconfont icon-guanbi"></div>
+      </div>
+      <audio id="music" controls src=''></audio>
+    </div>
+    <!-- 骨架屏 -->
+    <div class="Skeleton">
+      <div class="base item1"></div>
+      <div class="flex">
+        <div class="base text"></div>
+        <div class="base text"></div>
+        <div class="base text"></div>
+        <div class="base text"></div>
+      </div>
+      <div class="base item2"></div>
+      <div class="flex" style="margin-bottom: 0px;">
+        <div class="base mean"></div>
+        <div class="base mean"></div>
+        <div class="base mean"></div>
+        <div class="base mean"></div>
+        <div class="base mean"></div>
+      </div>
+      <div class="flex" style="margin-top: 5px;">
+        <div class="base mean" style="height: 10px;"></div>
+        <div class="base mean" style="height: 10px;"></div>
+        <div class="base mean" style="height: 10px;"></div>
+        <div class="base mean" style="height: 10px;"></div>
+        <div class="base mean" style="height: 10px;"></div>
+      </div>
+      <div class="base item2"></div>
+      <div class="base title">
+      </div>
+      <div class="flex" style="margin-bottom: 0px;">
+        <div class="base mean" style="height: 120px;border-radius: 10px;"></div>
+        <div class="base mean" style="height: 120px;border-radius: 10px;"></div>
+        <div class="base mean" style="height: 120px;border-radius: 10px;"></div>
+        <div class="base mean" style="height: 120px;border-radius: 10px;"></div>
+      </div>
+      <div class="flex" style="margin-top: 5px;">
+        <div class="base mean" style="height: 10px;"></div>
+        <div class="base mean" style="height: 10px;"></div>
+        <div class="base mean" style="height: 10px;"></div>
+        <div class="base mean" style="height: 10px;"></div>
+      </div>
+      <div class="base title"></div>
+      <div class="base item2" style="height: 160px;"></div>
+      <div class="base title"></div>
+      <div class="base item2" style="margin: 10px 0;"></div>
+      <div class="base item2" style="margin: 10px 0;"></div>
+      <div class="base item2" style="margin: 10px 0;"></div>
+      <div class="base item2" style="margin: 10px 0;"></div>
+      <div class="base item2" style="margin: 10px 0;"></div>
+      <div class="base item2" style="margin: 10px 0;"></div>
+      <div class="base item2" style="margin: 10px 0;"></div>
+    </div>
+</body>
+
+</html>

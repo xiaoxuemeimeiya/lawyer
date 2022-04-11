@@ -1,0 +1,14 @@
+.tabbar {
+    // 处理按钮会有裁剪的问题
+    height: unset;
+    .tabbarHeader {
+        height: 100px;
+    }
+    .ll-cell__bd {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

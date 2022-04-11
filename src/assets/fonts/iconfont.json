@@ -1,0 +1,86 @@
+{
+  "id": "872045",
+  "name": "主页",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7069152",
+      "name": "播放",
+      "font_class": "bofang1",
+      "unicode": "e737",
+      "unicode_decimal": 59191
+    },
+    {
+      "icon_id": "913743",
+      "name": "更多",
+      "font_class": "chakantiezigengduo",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "5979970",
+      "name": "双上箭头-01",
+      "font_class": "shuangshangjiantou-",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "11808714",
+      "name": "播放",
+      "font_class": "icon_play",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "14478390",
+      "name": "关  闭",
+      "font_class": "guanbi",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "6207819",
+      "name": "播放中",
+      "font_class": "ziyuanldpi",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "14102128",
+      "name": "播放",
+      "font_class": "bofang11",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "13743965",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "7588088",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "12575446",
+      "name": "Last 上一曲",
+      "font_class": "Lastshangyiqu",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "12575450",
+      "name": "Next 下一曲",
+      "font_class": "Nextxiayiqu",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    }
+  ]
+}

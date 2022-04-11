@@ -1,0 +1,149 @@
+.tg-care1{
+  position:fixed;
+  height: 100%;
+  bottom:0;
+  background:rgba(0,0,0,0.8);
+  width: 100%;
+  z-index:999;
+  .line-img{
+    width:102px;
+    height:324px;
+    position: absolute;
+    right:38px;
+    top:28px;
+  }
+  .user{
+    text-align:center;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-295px;
+    margin-top:-300px;
+    //width:590px;
+    //height:672px;
+    z-index:999;
+    .close-img{
+      width:72px;
+      height:72px;
+      position: absolute;
+      right:20px;
+      top:-100px;
+    }
+    .share-text{
+      background: #fff;
+      position:absolute;
+      z-index:9999;
+      width:580px;
+      height:560px;
+      font-size:30px;
+      text-align:left;
+      .text{
+        background: #8d8e9a;
+        word-break : break-all;
+        margin:20px;
+        padding:20px;
+      }
+      .copy{
+        width:200px;
+        height:80px;
+        line-height:80px;
+        border-radius:20px;
+        border:2px solid #8d8e9a;
+        text-align:center;
+        margin:auto;
+      }
+    }
+    .img{
+      width:590px;
+      height:672px;
+    }
+    .close{
+      width: 330px;
+      height: 87px;
+      position: absolute;
+      bottom:-92px;
+      left:50%;
+      margin-left:-165px;
+      font-size: 30px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #8D8E9A;
+      line-height: 96px;
+    }
+  }
+}
+
+.tg-care2{
+  position:fixed;
+  height: 100%;
+  bottom:0;
+  background:rgba(0,0,0,0.8);
+  width: 100%;
+  z-index:999;
+  .user{
+    .close-img{
+      width:72px;
+      height:72px;
+      position: absolute;
+      right:0;
+      top:-30px;
+    }
+    text-align:center;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-295px;
+    margin-top:-280px;
+    //width:590px;
+    //height:672px;
+    z-index:999;
+    .img{
+      width:580px;
+      height:560px;
+    }
+    .close{
+      width: 330px;
+      height: 87px;
+      position: absolute;
+      bottom:-92px;
+      left:50%;
+      margin-left:-165px;
+      font-size: 30px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #8D8E9A;
+      line-height: 96px;
+    }
+  }
+}
+
+.TgShare{
+  position:fixed;
+  bottom:165px;
+  width:126px;
+  height:126px;
+  right:16px;
+  .TgShare-img{
+    width:126px;
+    height:126px;
+    animation-name: scaleDraw; /*关键帧名称*/
+    animation-timing-function: ease-in-out; /*动画的速度曲线*/
+    animation-iteration-count: infinite; /*动画播放的次数*/
+    animation-duration: 2.3s; /*动画所花费的时间*/
+  }
+  @keyframes scaleDraw {
+    /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
+    0% {
+      transform: scale(1); /*开始为原始大小*/
+    }
+    25% {
+      transform: scale(0.9); /*放大1.1倍*/
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(0.9);
+    }
+  }
+}

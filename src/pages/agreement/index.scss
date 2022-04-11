@@ -1,0 +1,47 @@
+@import "../../styles/var.scss";
+
+.agreementPage {
+  padding: 0 20px;
+  font-size:30px;
+  // font-family:PingFangSC-Semibold,PingFang SC;
+  color: $__color-text-primary;;
+  line-height:52px;
+  padding-bottom: 70px;
+  .theme{
+    text-align: center;
+    padding: 30px 0 40px;
+    font-weight:600;
+    font-size:32px;
+  }
+  .title{
+    padding-top: 34px;
+    font-weight:600;
+    font-size:32px;
+  }
+  .bold{
+    display: inline;
+    font-weight:600;
+  }
+  .br{
+    width: 100%;
+    height: 0;
+  }
+  .agreeBtn{
+    width:318px;
+    height:96px;
+    margin: 0 auto 0;
+    text-align: center;
+    background:rgba(214,36,25,1);
+    border-radius:56px;
+
+    font-size: $__font-size-large;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:96px;
+  }
+  .agreed{
+    background:rgba(240,240,240,1);
+    color:rgba(24,24,26,.4);
+  }
+}

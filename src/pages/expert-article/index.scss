@@ -1,0 +1,51 @@
+@import "../../styles/var.scss";
+
+.ExpertArticle {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+
+  .article-title {
+    padding: 24px;
+    font-size: $__font-size-xl-large;
+    color: $__color-text-primary;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  /* 专家信息 */
+  .expert {
+    margin: 20px 24px;
+    background: rgba(240, 241, 244, 1);
+    border-radius: 16px;
+  }
+  .expert-title {
+    font-size: $__font-size-xl-large;
+    font-weight: 600;
+  }
+  .avatar-expert {
+    margin-right: 20px;
+  }
+  .expert__name {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: $__font-size-base-bigger;
+  }
+  .expert__bd {
+    font-size: $__font-size-extra-small;
+  }
+  .expert__ft {
+    font-size: $__font-size-base;
+    color: $__color-text-primary;
+  }
+  .expert .ll-cell__ft--in-access:after {
+    border-color: $__color-text-primary;
+  }
+
+  .article-content {
+    padding: 24px;
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,133 @@
+@import './styles/index.scss';
+.musicPlayer {
+  position: fixed;
+  bottom: 140px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1000;
+  transition: all 1s;
+  #music {
+    display: none;
+    top: -9999px;
+    left: -9999px;
+    position: absolute;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .main {
+    width: 702px;
+    height: 104px;
+    border-radius: 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    padding: 12px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    color: #fff;
+    position: relative;
+    box-shadow: inset 0 0 60px 60px rgba(0, 0, 0, 0.3);
+
+    .iconfont {
+      width: 60px;
+      color: #fff;
+      font-size: 40px;
+      line-height: 0;
+    }
+    .main__background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      filter: blur(10px);
+      // opacity: 0.8;
+    }
+    .iconfont {
+      .playingStatus {
+        display: none;
+        width: 60px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .musicPlaying {
+      .playingStatus {
+        display: block;
+      }
+    }
+    .main__open {
+      padding-left: 20px;
+    }
+    .main__control {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      .main__control__background {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        box-shadow: inset 0 0 60px 60px rgba(0, 0, 0, 0.3);
+        mix-blend-mode: color-burn;
+      }
+      .start,
+      .pause {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+      }
+      .main__control__pause {
+        width: 30px;
+        font-size: 30px;
+        color: #fff;
+      }
+    }
+    .main__musicInfo {
+      padding-left: 10px;
+      flex: 1;
+      .main__musicInfo__name {
+        width: 420px;
+        height: 42px;
+        font-size: 30px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 42px;
+      }
+      .main__musicInfo__schedule {
+        display: flex;
+        width: 160px;
+        height: 34px;
+        font-size: 24px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 34px;
+        .now{
+          margin-right:5px;
+        }
+        .count{
+          margin-left:5px;
+        }
+      }
+    }
+  }
+}
+.musicOut {
+  bottom: -1000px;
+}

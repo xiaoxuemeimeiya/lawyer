@@ -1,0 +1,155 @@
+@import "../../styles/var.scss";
+
+.videoVipBuy {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+  display: flex;
+  background:url('https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv1.3/month-bg.png');
+  flex-direction: column;
+  margin-bottom:50px;
+  .videoVip__top {
+    position: relative;
+    .top__background {
+      width: 100%;
+      text-align:center;
+      height: unset;
+      .taro-img__mode-scaletofill{
+        width:75%;
+        margin-top:46px;
+      }
+    }
+  }
+  .center__background {
+    width: 100%;
+    height: 100%;
+    text-align:center;
+    flex-direction: column;
+    .taro-img__mode-scaletofill{
+      width:100%;
+    }
+  }
+  .center-privilege{
+    margin:-12px 14px;
+    background: #FFFFFF;
+    border-radius: 32px;
+    padding-top:34px;
+    text-align:center;
+    margin-bottom:100px;
+    .center-title{
+      margin:0 auto;
+      width: 246px;
+      height: 63px;
+      line-height:63px;
+      background: #F43B4D;
+      border-radius: 7px;
+      font-size: 36px;
+      font-family: Alibaba PuHuiTi;
+      font-weight: bold;
+      color: #FFFFFF;
+      text-align:center;
+      margin-bottom:34px;
+    }
+    .center-gz{
+      margin-top:90px;
+    }
+    .vip-card{
+      width:80%;
+      height:unset;
+    }
+    .month-card{
+      margin-top:45px;
+    }
+  }
+  .notice {
+    padding: 0 50px 100px;
+    margin-bottom:100px;
+    .notice__main {
+      font-size: 24px;
+      font-family: Alibaba PuHuiTi;
+      font-weight: 400;
+      color: #161413;
+      line-height: 40px;
+      text-align:left;
+      word-wrap: break-word;
+      word-break: normal;
+      span{
+        color:#F43B4D;
+      }
+    }
+  }
+  .btn__open {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 0 50px;
+    height: 124px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    .ll-cell__bd,
+    .ll-cell__ft {
+      z-index: 1;
+    }
+    .ll-cell__bt{
+      margin:auto;
+      width: 450px;
+      height: 80px;
+      background: #F43B4D;
+      border-radius: 40px;
+      text-align:center;
+      font-size: 36px;
+      font-family: Alibaba PuHuiTi;
+      font-weight: 400;
+      color: #FFFFFF;
+      line-height: 80px;
+    }
+  }
+}
+
+.Chunktitle {
+  .title__main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .text {
+      font-size: 40px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: rgba(3, 3, 3, 1);
+      line-height: 56px;
+      padding: 0 14px;
+    }
+    .icon {
+      width: 32px;
+      height: 14px;
+    }
+  }
+  .title__subhead {
+    margin-top: 8px;
+    font-size: 24px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(141, 142, 154, 1);
+    line-height: 34px;
+    text-align: center;
+  }
+}
+
+@keyframes autoImg {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}

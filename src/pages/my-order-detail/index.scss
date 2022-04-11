@@ -1,0 +1,141 @@
+@import "../../styles/var.scss";
+
+.MyOrderDetail {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #f0f1f4;
+  display: flex;
+  flex-direction: column;
+
+  .footer--hanlde {
+    width: 750px;
+    height: 96px;
+    background: rgba(255, 255, 255, 1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    .footer__btn {
+      padding: 10px 26px;
+      border-radius: 26px;
+      border: 2px solid rgba(31, 44, 63, 0.2);
+
+      font-size: 24px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(24, 24, 26, 1);
+      line-height: 34px;
+      margin-right: 20px;
+    }
+    .footer__btn--red {
+      color: #d62419;
+      border-color: #d62419;
+    }
+  }
+  .prizeCount {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    .ll-cell::before {
+      display: none;
+    }
+    .ll-cell__hd {
+      font-size: 28px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(24, 24, 26, 1);
+      line-height: 40px;
+    }
+    .ll-cell__ft {
+      font-size: 26px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      font-weight: bold;
+      color: rgba(27, 28, 53, 1);
+      line-height: 30px;
+    }
+    .red--box {
+      font-size: 24px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+    }
+    .red {
+      font-size: 32px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      font-weight: bold;
+      color: rgba(232, 46, 35, 1);
+      line-height: 38px;
+      padding-left: 10px;
+    }
+  }
+
+  .detail {
+    margin-bottom: 20px;
+  }
+  .detail__hd {
+    padding: 0 24px;
+    box-sizing: border-box;
+    height: 72px;
+    font-size: $__font-size-small;
+    color: $__color-text-primary;
+  }
+  .detail-status {
+    color: $__color-text-primary;
+  }
+  .detail-img {
+    width: 256px;
+    height: 192px;
+    border-radius: 12px;
+    margin-right: 20px;
+  }
+  .detail-name {
+    font-size: $__font-size-base-bigger;
+    color: $__color-text-primary;
+    font-weight: 500;
+    &.ellipsis-4 {
+      max-height: 166.4px;
+    }
+  }
+  .detail__bd {
+    padding: 32px 24px;
+  }
+  .detail__ft {
+    box-sizing: border-box;
+    font-size: $__font-size-base;
+    &.detail__ft--first {
+      padding-top: 30px;
+    }
+    &.detail__ft--second {
+      padding-bottom: 30px;
+    }
+    &:last-child {
+      height: 102px;
+    }
+  }
+
+  /* 上课消息 */
+  .sign-up-title {
+    font-size: $__font-size-medium;
+    font-weight: 600;
+    padding: 30px 24px 10px;
+  }
+  .sign-up-item {
+    display: flex;
+    align-items: center;
+    line-height: 2.2;
+    vertical-align: middle;
+  }
+  .sign-up__icon {
+    display: block;
+    margin-right: 10px;
+  }
+  .sign-up__hd {
+    font-size: $__font-size-base;
+    font-weight: 600;
+    margin-right: 36px;
+  }
+  .sign-up__bd {
+    font-size: $__font-size-base;
+  }
+}

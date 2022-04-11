@@ -1,0 +1,129 @@
+@import "../../styles/var.scss";
+
+.videoVipBuy {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background: #F0F1F4;
+  display: flex;
+  flex-direction: column;
+  .sixPrivilege {
+    margin: 24px;
+    background:#fff;
+    border-radius: 16px;
+    .buySubmit-title{
+      margin:30px;
+      width:100%;
+      height: 34px;
+      font-size: 24px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 800;
+      color: #18181A;
+      line-height: 34px;
+    }
+    .buySubmit-list{
+      margin:24px;
+      width:100%;
+       .img{
+         width:148px;
+         height:94px;
+         float:left;
+       }
+      .text{
+        margin-left:5px;
+        font-size: 26px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 600;
+        color: #18181A;
+        line-height: 36px;
+        float:left;
+      }
+      .text-price{
+        height: 94px;
+        font-size: 24px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 800;
+        color: #D62419;
+        line-height: 94px;
+        float:right;
+        margin-right:30px;
+      }
+    }
+  }
+  .buySubmit-phone {
+    margin:24px;
+    border-radius:16px;
+    .ll-input{
+      padding-left:20px;
+      float:left;
+      width:300px;
+    }
+    .very-code{
+      width:176px;
+      height:60px;
+      border-radius: 30px;
+      border: 2px solid #D62419;
+      float:right;
+      line-height:60px;
+      text-align:center;
+      font-size:24px;
+      color: #D62419;
+    }
+
+  }
+  /* 底部栏 */
+  .bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 112px;
+    .btn{
+      border-radius:0;
+    }
+  }
+  .bottom__bd {
+    height: 100%;
+    padding: 0;
+  }
+  .bottom__btn {
+    height: 112px;
+    line-height: 112px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    background: $__color-primary;
+    color: #ffffff;
+    white-space: nowrap;
+    font-size: $__font-size-medium;
+    font-weight: 600;
+  }
+  .price {
+    padding-left: 30px;
+    font-size: 48px;
+    color: $__color-primary;
+    font-weight: 600;
+    .small {
+      font-size: $__font-size-base-bigger;
+    }
+  }
+
+  .ll-input {
+    font-size: $__font-size-base-bigger;
+    color: $__color-text-primary;
+  }
+}
+
+
+
+@keyframes autoImg {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}

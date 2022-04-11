@@ -1,0 +1,158 @@
+@import "../../styles/var.scss";
+
+.KnowledgeOfflineDetail {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #ecedee;
+
+  /* 封面 */
+  .banner__image {
+    display: block;
+    width: 100%;
+    height: 372px;
+  }
+  .banner__ft {
+    box-sizing: border-box;
+    //height: 96px;
+    height: 120px;
+    background: linear-gradient(
+      135deg,
+      rgba(242, 62, 62, 1) 0%,
+      rgba(231, 33, 127, 1) 100%
+    );
+    color: #ffffff;
+    .ll-cell__bd {
+      //font-size: $__font-size-xl-large;
+      font-size: $__font-size-large;
+    }
+    .banner-ft__price {
+      font-size: $__font-size-base;
+    }
+    .ll-cell__ft {
+      color: #ffffff;
+      font-size: $__font-size-small;
+    }
+    .banner-ft__num {
+      font-size: $__font-size-xl-large;
+      vertical-align: -6px;
+    }
+  }
+
+  /* 标题 */
+  .course-title {
+    padding: 30px 24px 0;
+    font-size: $__font-size-large;
+    font-weight: 600;
+  }
+  .course-title__ft {
+    font-size: $__font-size-base-bigger;
+    color: $__color-text-regular;
+    font-weight: normal;
+    line-height: 2;
+  }
+  .collection {
+    padding-left: 10px;
+    font-size: 20px;
+    line-height: 2;
+    text-align: center;
+  }
+
+  /* 上课消息 */
+  .sign-up-item {
+    display: flex;
+    align-items: center;
+    line-height: 2.2;
+    vertical-align: middle;
+  }
+  .sign-up__icon {
+    display: block;
+    margin-right: 10px;
+  }
+  .sign-up__hd {
+    font-size: $__font-size-base;
+    font-weight: 600;
+    min-width:56px;
+    margin-right: 36px;
+  }
+  .sign-up__bd {
+    font-size: $__font-size-base;
+    line-height:35px;
+    max-width:550px;
+  }
+
+  /* 专家信息 */
+  .expert {
+    margin: 20px 0;
+  }
+  .expert-title {
+    font-size: $__font-size-xl-large;
+    font-weight: 600;
+  }
+  .avatar-expert {
+    margin-right: 20px;
+  }
+  .expert__name {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: $__font-size-base-bigger;
+  }
+  .expert__bd {
+    font-size: $__font-size-extra-small;
+  }
+  .expert__ft {
+    font-size: $__font-size-base;
+    color: $__color-text-primary;
+  }
+  .expert .ll-cell__ft--in-access:after {
+    border-color: $__color-text-primary;
+  }
+
+  /* 课程介绍-课程目录-评价 */
+
+  /* 底部栏 */
+  .bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 112px;
+  }
+  .bottom__bd {
+    height: 100%;
+    padding: 0;
+  }
+  .bottom__btn {
+    box-sizing: border-box;
+    //width: 165px;
+    padding:0 30px;
+    text-align: center;
+    background: #fcfcfd;
+    .icon {
+      margin-top: 6px;
+    }
+    .bottom-btn__text {
+      line-height: 1;
+      font-size: $__font-size-smallest;
+      color: $__color-text-primary;
+    }
+  }
+  .btn-learn-now {
+    width: 100%;
+    height: 112px;
+    border-radius: 0;
+    font-size: $__font-size-medium;
+  }
+
+  /* 分享提示 */
+  .share-tip {
+    position: absolute;
+    width: 352px;
+    height: 78px;
+    top: -76px;
+    left: 18px;
+  }
+}

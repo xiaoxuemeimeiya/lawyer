@@ -1,0 +1,34 @@
+.tt-cells {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    flex-wrap: wrap;
+    div {
+        box-sizing: border-box;
+    }
+    .tt-cell-box {
+        box-sizing: border-box;
+        padding-left: 24px;
+        padding-right: 21px;
+
+        margin-bottom: 40px;
+        // &:nth-last-child(1),
+        // &:nth-last-child(2) {
+        //     margin-bottom: 0;
+        // }
+    }
+    .tt-cell-box--half {
+        width: 50%;
+    }
+    .tt-cell {
+        display: flex;
+        flex-direction: column;
+    }
+    .tt-cell--circle {
+        border-radius: 16px;
+        overflow: hidden;
+    }
+    .tt-cell__img {
+        width: 100%;
+    }
+}

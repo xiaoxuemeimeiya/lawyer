@@ -1,0 +1,43 @@
+@import "../../styles/var.scss";
+
+.ExpertDetail {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+
+  /* 头部 */
+  .expert-header {
+    &::after {
+      left: 20px;
+      right: 20px;
+    }
+  }
+  .expert-avatar {
+    width: 144px;
+    height: 144px;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    margin: 10px 16px 0 16px;
+  }
+  .expert-name {
+    font-size: 56px;
+    font-weight: 500;
+    color: $__color-text-primary;
+  }
+  .expert-title {
+    line-height: 2;
+    color: $__color-text-regular;
+  }
+
+  /* 内容 */
+  .detail-title {
+    font-size: $__font-size-large;
+    font-weight: 500;
+    line-height: 2.6;
+  }
+  .detail-content {
+    padding: 20px 10px;
+  }
+}

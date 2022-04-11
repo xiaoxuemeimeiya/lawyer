@@ -1,0 +1,278 @@
+.videoDetail {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .videoDetail__main {
+        height: 74%;
+        padding: 6% 68px 18%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: inset 0 0 540px 540px rgba(0, 0, 0, 0.3);
+        .audio__banner {
+            width: 614px;
+            height: 460px;
+            box-shadow: 0px 40px 40px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+        }
+        .audio__title {
+            margin: 0 auto;
+            height: 50px;
+            font-size: 36px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 1);
+        }
+        .audio__info {
+            width: 80%;
+            text-align: center;
+            padding: 2% 0;
+        }
+        .audio__author {
+            padding-top: 16px;
+            height: 36px;
+            font-size: 26px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 36px;
+        }
+        .audio__schedule {
+            width: 100%;
+            .weui-slider {
+                padding: 0px;
+                padding-top: 4%;
+                padding-bottom: 20px;
+            }
+            .weui-slider__inner {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            .weui-slider__handler {
+                transform: scale(0.6);
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: #000;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            .audio__schedule__info {
+                display: flex;
+                justify-content: space-between;
+
+                font-size: 24px;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: rgba(255, 255, 255, 0.7);
+            }
+        }
+        .audio__control {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            height: 140px;
+            line-height: 0;
+            position: relative;
+            > div {
+                border-radius: 50%;
+            }
+            .prev,
+            .next {
+                font-size: 88px;
+                color: #fff;
+            }
+            .next {
+                transform: rotate(180deg);
+            }
+            .pause {
+                width: 140px;
+                height: unset;
+                position: relative;
+            }
+            .pause--loading {
+                &::after {
+                    position: absolute;
+                    content: "";
+                    width: 90%;
+                    height: 90%;
+                    box-sizing: border-box;
+                    position: absolute;
+                    top: 5%;
+                    left: 5%;
+                    border: 4px solid rgba(0, 0, 0, 0.7);
+                    border-left: none;
+                    border-radius: 50%;
+                    animation: turn 1s infinite;
+                }
+            }
+            .icon-bofang {
+                font-size: 144px;
+            }
+            .ban {
+                opacity: 0.6;
+            }
+        }
+        .audio__handle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 112%;
+            font-size: 20px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 28px;
+            .handle__item {
+                text-align: center;
+                width: 25%;
+            }
+            .handle__icon {
+                margin: 0 auto;
+                width: 50px;
+                height: 50px;
+                padding-bottom: 12px;
+                .img {
+                    width: unset;
+                    height: unset;
+                    max-width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        .audio__blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            // -webkit-filter: blur(15px);
+            // -moz-filter: blur(15px);
+            // -o-filter: blur(15px);
+            // -ms-filter: blur(15px);
+            filter: blur(0.42667rem) drop-shadow(0 0 1px #000);
+        }
+    }
+    .videoDetail__audioList__box {
+        flex: 1;
+        position: relative;
+    }
+    .videoDetail__audioList {
+        position: absolute;
+        width: 100%;
+        height: 70%;
+        transform: translateY(100%);
+        bottom: 20%;
+        background: rgba(255, 255, 255, 1);
+        border-radius: 48px 48px 0px 0px;
+        overflow: hidden;
+        transition: all 0.5s;
+        display: flex;
+        flex-direction: column;
+        .list__top {
+            // width: 96px;
+            // height: 12px;
+            height: 44px;
+            // background: rgba(236, 237, 238, 1);
+            border-radius: 6px;
+            // margin: 0 auto;
+            // margin-top: 32px;
+            position: relative;
+            &::after {
+                content: "";
+                width: 96px;
+                height: 12px;
+                background: rgba(236, 237, 238, 1);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .list__title {
+            padding: 24px;
+            font-size: 36px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: rgba(27, 28, 53, 1);
+            line-height: 50px;
+        }
+        .list__content {
+            flex: 1;
+            overflow-y: scroll;
+            padding-bottom: 40px;
+            .ll-cell__hd {
+                font-size: 36px;
+                font-family: PingFangSC-Semibold, PingFang SC;
+                font-weight: 600;
+                color: rgba(24, 24, 26, 0.5);
+                line-height: 48px;
+                width: 60px;
+            }
+            .ll-cell__bd {
+                font-size: 30px;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: rgba(24, 24, 26, 1);
+                line-height: 48px;
+            }
+            .ll-cell__ft {
+                padding-left: 54px;
+            }
+            .active {
+                color: #e82e23;
+                .iconfont {
+                    // font-size: 40px;
+                    color: #e82e23;
+                }
+                > div {
+                    color: #e82e23;
+                }
+            }
+            .musicPlaying {
+                width: 48px;
+                height: unset;
+            }
+            .icon-bofang1 {
+                color: #18181a;
+                font-size: 48px;
+                position: relative;
+            }
+            .icon-bofang1:before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    .showList {
+        bottom: 70%;
+    }
+}
+@keyframes turn {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}

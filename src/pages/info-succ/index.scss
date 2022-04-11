@@ -1,0 +1,58 @@
+@import "../../styles/var.scss";
+
+.InfoSucc {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  position: relative;
+  background: #fff;
+
+  text-align: center;
+
+  .icon-tip {
+    padding-top: 176px;
+  }
+  .icon-suc {
+    display: inline-block;
+    width: 144px;
+    height: 144px;
+  }
+
+  .tip-main {
+    display: block;
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .tip-small {
+    font-size: 28px;
+    display: block;
+    padding-top: 20px;
+    color: $__color-text-secondary;
+  }
+  .btn-call {
+    display: block;
+    height: 96px;
+    line-height: 96px;
+    border-radius: 56px;
+    font-size: 36px;
+    font-weight: 500;
+    margin-top: 70px;
+  }
+
+  .club-invite-code-back {
+    margin-top: 120px;
+    background: #fff;
+    border: 1px solid rgba(240, 241, 244, 1);
+    color: $__color-text-primary;
+  }
+
+  .btn-dan {
+    display: block;
+    margin: 90px auto;
+    width: 320px;
+    height: 80px;
+    line-height: 80px;
+    font-size: $__font-size-medium;
+  }
+}

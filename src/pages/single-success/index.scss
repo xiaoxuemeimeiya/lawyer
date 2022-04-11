@@ -1,0 +1,33 @@
+html{background: #F0F1F4;}
+.single-success {
+    background: #fff;
+    text-align: center;
+    padding-top: 64px;
+    padding-bottom:100px;
+    .img {
+        width: 64px;
+        height: 64px;
+    }
+    .text--black {
+        height: 50px;
+        font-size: 36px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(22, 20, 19, 1);
+        line-height: 50px;
+        text-align: center;
+        padding: 22px 0 40px;
+    }
+    .onebyone {
+        width: 400px;
+        height: 88px;
+        background: #D62419;
+        border-radius: 48px;
+        margin: 0 auto;
+        font-size: 30px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #FFFFFF;
+        line-height: 88px;
+    }
+}

@@ -1,0 +1,156 @@
+/* ll-cell */
+
+.ll-cells {
+  position: relative;
+  background-color: #ffffff;
+  line-height: 1.41176471;
+  font-size: 26px;
+}
+.ll-cells:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #f0f0f0;
+  color: #f0f0f0;
+}
+.ll-cells:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #f0f0f0;
+}
+
+.ll-cell {
+  padding: 20px 24px;
+  position: relative;
+  word-break: break-all;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.ll-cell:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #f0f0f0;
+  color: #f0f0f0;
+  left: 15px;
+  right: 15px;
+}
+.ll-cell:first-child:before {
+  display: none;
+}
+
+.ll-cell--active {
+  background-color: #ececec;
+}
+.ll-cell--primary {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+.ll-cell--noborder::before,
+.ll-cell--noborder::after {
+  display: none;
+}
+
+.ll-cell__bd {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+.ll-cell__ft {
+  text-align: right;
+  color: #999999;
+}
+
+.ll-cell--access {
+  color: inherit;
+}
+.ll-cell__ft--in-access {
+  padding-right: 26px;
+  position: relative;
+}
+.ll-cell__ft--in-access:after {
+  content: " ";
+  display: inline-block;
+  /* prettier-ignore */
+  height: 6PX;
+  /* prettier-ignore */
+  width: 6PX;
+  /* prettier-ignore */
+  border-width: 1PX 1PX 0 0;
+  border-color: rgba(24, 24, 26, 0.5);
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: relative;
+  top: -2px;
+  position: absolute;
+  top: 50%;
+  /* prettier-ignore */
+  margin-top: -4PX;
+  /* prettier-ignore */
+  right: 2px;
+}
+
+.ll-cell_link {
+  color: #586c94;
+  font-size: 28px;
+}
+.ll-cell_link:active {
+  background-color: #ececec;
+}
+.ll-cell_link:first-child:before {
+  display: block;
+}
+
+.ll-label {
+  width: 210px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.ll-input {
+  height: 2.58823529em;
+  min-height: 2.58823529em;
+  line-height: 2.58823529em;
+}
+
+.ll-tip {
+  padding: 24px 30px 0;
+  line-height: 1.2;
+  color: #999;
+  font-size: 32px;
+}
+.ll-textarea {
+  width: 100%;
+  font-size: 30px;
+  color: #18181a;
+}
+
+/* 按压样式 */
+.ll-hover {
+  background: rgba(204, 204, 204, 0.1);
+}
+
+/* 空样式 */
+.empty {
+  height: 0 !important;
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  visibility: hidden;
+}

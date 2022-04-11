@@ -1,0 +1,34 @@
+@import "../../styles/var.scss";
+
+.MyCourse {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #ecedee;
+
+  .header {
+    // position: fixed;
+    // left: 0;
+    // top: 0;
+    // width: 100%;
+  }
+
+  .media:first-child {
+    margin-top: 24px;
+  }
+
+  .tabs-mycourse {
+    box-sizing: border-box;
+    padding: 0 24px;
+    .at-tabs__item {
+      box-sizing: border-box;
+      padding: 0 24px;
+      height: 96px;
+      line-height: 96px;
+    }
+  }
+}
