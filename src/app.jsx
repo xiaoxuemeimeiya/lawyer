@@ -40,12 +40,10 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/knowledge',
-      'pages/videoDetail',
+      'pages/knowledge',    //首页
+      'pages/videoDetail',  //课程视频
       'pages/videoVip-index',//会员页面
       'pages/videoVip-coupon',//会员优惠券页面
-      'pages/videoVip-buy',
-      'pages/videoVip-buy--success',
       'pages/videoVip-course--select',
       'pages/single-list',
       'pages/single-detail',
@@ -77,11 +75,7 @@ class App extends Component {
       'pages/expert-article',
       'pages/videoVip-buy-submit',
       'pages/videoVip-free',
-      'pages/videoVip-buy-active',
-      'pages/videoVip-buy-active-submit',
-      'pages/videoVip-quarter',
       'pages/videoVip',
-      'pages/videoVip-student-submit',
       'pages/knowledge-list',
       'pages/knowledge-famouse',
       'pages/supervisor',
@@ -103,10 +97,8 @@ class App extends Component {
       'pages/yuyue-form',
       'pages/videoVip-exchange',
       'pages/member-card',
-      'pages/videoVip-student-free',
       'pages/live-list',
       'pages/live-detail',
-      'pages/box',
     ],
     window: {
       backgroundTextStyle: 'light',
