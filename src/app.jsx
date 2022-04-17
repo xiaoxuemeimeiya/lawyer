@@ -71,7 +71,6 @@ class App extends Component {
       'pages/my',//我的
       'pages/404',
       'pages/my-order-comment',
-      'pages/free-list',
       'pages/expert-article',
       'pages/videoVip-buy-submit',
       'pages/videoVip-free',

@@ -152,15 +152,6 @@ export function getShareImg2( id) {
   return request.post("/miniapp/share/share_img2", {  id })
 }
 
-/**
- * 抗疫详情
- *
- * @export
- * @returns
- */
-export function getDisease(name) {
-  return request.post("/miniapp/disease/index",{name})
-}
 
 /**
  * 资讯

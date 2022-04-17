@@ -12,7 +12,7 @@ import { AtTabs, AtActivityIndicator } from 'taro-ui'
 import { inject } from '@tarojs/mobx'
 //import voice from '@/src/components/musicPlayer'
 
-import { getKnowledge, getOnline, getFreeCourse, getMonths, getFamous,getDisease } from "../../api/knowledge"
+import { getKnowledge, getOnline, getMonths, getFamous,getOffline } from "../../api/knowledge"
 import { getCategory, getExpretList,alive,course_cat,careGzh,live,scan } from "../../api/expert"
 import { handleInput } from "../../utils/util"
 import { onScrollToLower } from "../../utils/scroll"
@@ -42,14 +42,6 @@ class Index extends Component {
     this.state = {
       /** 轮播图 */
       swiper: [],
-      /** 每日答疑解惑 */
-      ques: {},
-      /** 免费听课 */
-      free: [],
-      /** 免费听课1 */
-      free1: [],
-      /** 免费听课2 */
-      free2: [],
       /** 推荐直播 */
       liveActive: {},
       /** 本月上线 */
@@ -60,8 +52,6 @@ class Index extends Component {
       offline: [],
       /** 线上课程 */
       dataList: [],
-      /**抗疫数据**/
-      diseaseList: [],
       keyword: "",
       cat_course:[],
       aliveList:[],
@@ -98,79 +88,36 @@ class Index extends Component {
   async getDataList() {
     this.getCategory()
     await this.getSwiper()
-    this.getFreeCourse()
-    this.getMonths()
-    this.getFamous()
     this.getData()
+    this.getoffline()
     this.getExpretListData()
-    //this.getDisease()
-    this.alive()
     this.live()
     this.course_cat()
     // 取消显示首次loading
       this.state.isFirstLoding && this.setState({ isFirstLoding: false })
-      //voice.isShowMusicPlayer()
-      this.scan()
   }
 
-    /**用户浏览记录**/
-    scan = () => {
-        scan(localStorage.getItem('province'),localStorage.getItem('city'),localStorage.getItem('ip'))
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-                Taro.showToast({
-                    title: err.msg ? err.msg : String(err), //提示的内容,
-                    icon: 'none', //图标,
-                    duration: 2000, //延迟时间,
-                    mask: true, //显示透明蒙层，防止触摸穿透,
-                })
-            })
-    }
+  /** 获取轮播图和线下学院 */
+  getSwiper = () => {
+    return getKnowledge()
+      .then(res => {
+        console.log("TCL: Index -> getSwiper -> res", res)
+        this.setState({
+          swiper: res.data.header, // 轮播图
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        Taro.showToast({
+          title: err.msg ? err.msg : String(err), //提示的内容, 
+          icon: 'none', //图标, 
+          duration: 2000, //延迟时间, 
+          mask: true, //显示透明蒙层，防止触摸穿透, 
+        })
+      })
 
+  }
 
-    /** 抗疫详情 */
-    getDisease = () => {
-        getDisease(localStorage.getItem('province'))
-            .then(res => {console.log(localStorage.getItem('province'))
-                console.log(res)
-                this.setState({
-                    diseaseList: res.data
-                })
-            })
-            .catch(err => {
-                console.log(err)
-                Taro.showToast({
-                    title: err.msg ? err.msg : String(err), //提示的内容,
-                    icon: 'none', //图标,
-                    duration: 2000, //延迟时间,
-                    mask: true, //显示透明蒙层，防止触摸穿透,
-                })
-            })
-
-    }
-
-    /** 热门直播 */
-    alive = () => {
-        alive()
-            .then(res => {console.log(res)
-                this.setState({
-                    aliveList: res.data
-                })
-            })
-            .catch(err => {
-                console.log(err)
-                Taro.showToast({
-                    title: err.msg ? err.msg : String(err), //提示的内容,
-                    icon: 'none', //图标,
-                    duration: 2000, //延迟时间,
-                    mask: true, //显示透明蒙层，防止触摸穿透,
-                })
-            })
-
-    }
     /** 热门直播 */
     live = () => {
         live()
@@ -242,16 +189,15 @@ class Index extends Component {
       })
   }
 
-  /** 线上学院 */
-  getData() {
+
+  getoffline() {
     if (this.state.isScrollEnd) return
-    let keyId = this.state.categories.list[this.state.categories.index] ? this.state.categories.list[this.state.categories.index]['id'] : ''
-    return getOnline(this.state.page, 1, keyId)
+    return getOffline(this.state.page)
       .then(res => {
         console.log("TCL: getExpertsList -> res", res)
-        this.setState({ loading: false })
+
         // 判断是否到底
-        if (res.data.course && res.data.course.length >= 15) {
+        if (res.data.offschool && res.data.offschool.length >= 15) {
           this.setState({ isScrollEnd: false })
         } else {
           this.setState({ isScrollEnd: true })
@@ -261,14 +207,14 @@ class Index extends Component {
         if (this.state.page == 1) {
           // 首次请求
           this.setState({
-            dataList: res.data.course,
+            offline: res.data.offschool,
             page: 2 // 默认为1,这里 1+1
           })
         } else {
           // 非首次请求
           this.setState(
             {
-              dataList: [...this.state.dataList, ...res.data.course],
+              offline: [...this.state.offline, ...res.data.offschool],
               page: this.state.page + 1
             },
             () => {
@@ -280,8 +226,8 @@ class Index extends Component {
           )
         }
 
-        // // 取消显示首次loading
-        // this.state.isFirstLoding && this.setState({ isFirstLoding: false })
+        // 取消显示首次loading
+        this.state.isFirstLoding && this.setState({ isFirstLoding: false })
       })
       .catch(err => {
         Taro.showToast({
@@ -293,80 +239,13 @@ class Index extends Component {
       })
   }
 
-  /** 获取轮播图和线下学院 */
-  getSwiper = () => {
-    return getKnowledge()
-      .then(res => {
-        console.log("TCL: Index -> getSwiper -> res", res)
 
-        this.setState({
-          swiper: res.data.header, // 轮播图
-          ques: res.data.everyday, // 每日答疑解惑
-          liveActive: res.data.radio, // 推荐直播
-          offline: res.data.offline, // 线下学院
-        })
-      })
-      .catch(err => {
-        console.log(err)
-        Taro.showToast({
-          title: err.msg ? err.msg : String(err), //提示的内容, 
-          icon: 'none', //图标, 
-          duration: 2000, //延迟时间, 
-          mask: true, //显示透明蒙层，防止触摸穿透, 
-        })
-      })
-
-  }
-
-  /** 免费听课 */
-  getFreeCourse = () => {
-    getFreeCourse()
+  /** 专家课程 */
+  getData = () => {
+    getOnline()
       .then(res => {
         this.setState({
-          free: res.data,
-          free1: [res.data[0]],
-          //free2: [res.data[1],res.data[2]]
-            free2: [res.data[1]]
-        })
-      })
-      .catch(err => {
-        console.log(err)
-        Taro.showToast({
-          title: err.msg ? err.msg : String(err), //提示的内容, 
-          icon: 'none', //图标, 
-          duration: 2000, //延迟时间, 
-          mask: true, //显示透明蒙层，防止触摸穿透, 
-        })
-      })
-
-  }
-
-  /** 本月上线 */
-  getMonths = () => {
-    getMonths()
-      .then(res => {
-        this.setState({
-          month: res.data
-        })
-      })
-      .catch(err => {
-        console.log(err)
-        Taro.showToast({
-          title: err.msg ? err.msg : String(err), //提示的内容, 
-          icon: 'none', //图标, 
-          duration: 2000, //延迟时间, 
-          mask: true, //显示透明蒙层，防止触摸穿透, 
-        })
-      })
-
-  }
-
-  /** 名家学堂 */
-  getFamous = () => {
-    getFamous()
-      .then(res => {
-        this.setState({
-          famous: res.data
+          dataList: res.data.course
         })
       })
       .catch(err => {
@@ -501,19 +380,12 @@ class Index extends Component {
                 <Recommend
                 alive={this.alive}
                   swiper={this.state.swiper}
-                  ques={this.state.ques}
-                  aliveList={this.state.aliveList}
                   liveList={this.state.liveList}
-                  free={this.state.free}
-                  free1={this.state.free1}
-                  free2={this.state.free2}
                   expretList={this.state.expretList}
                   month={this.state.month}
                   famous={this.state.famous}
                   offline={this.state.offline}
                   dataList={this.state.dataList}
-                  diseaseList={this.state.diseaseList}
-                  liveActive={this.state.liveActive}
                   cat_course={this.state.cat_course}
                   userInfo={this.state.userInfo}
                 ></Recommend>
