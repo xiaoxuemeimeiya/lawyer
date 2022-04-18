@@ -223,14 +223,14 @@ class Index extends Component {
               <View className='color-text-regular'>线下活动</View>
             </Navigator>
             <Navigator
-              url='/'
+              url='/pages/social-list'
               className='ll-cell__bd'
             >
               <View className='icon icon-online-classify'></View>
               <View className='color-text-regular'>行业社群</View>
              </Navigator>
             <Navigator
-               url='/'
+               url='/pages/expert-list'
                className='ll-cell__bd'
             >
               <View className='icon icon-expert-recommend'></View>
@@ -295,7 +295,7 @@ class Index extends Component {
       {/* 专家课程 */}
         <View className='section'>
           <View className='section__hd'>
-            <View className='title'>精品课程</View>
+            <View className='title'>专家课程</View>
           </View>
           {this.props.dataList && this.props.dataList.map((item,index) => (
             <View className='media-index'>
@@ -369,7 +369,7 @@ class Index extends Component {
         {/* 线下学院 */}
         <View className='section'>
           <View className='section__hd'>
-            <View className='title'>线下学院</View>
+            <View className='title'>线下活动 </View>
           </View>
 
           {this.props.offline && this.props.offline.map(item => (

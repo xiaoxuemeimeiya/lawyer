@@ -98,6 +98,8 @@ class App extends Component {
       'pages/member-card',
       'pages/live-list',
       'pages/live-detail',
+      'pages/expert-list',
+      'pages/social-list',
     ],
     window: {
       backgroundTextStyle: 'light',
