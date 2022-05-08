@@ -452,242 +452,8 @@ class Index extends Component {
     choiceVip = index => {
         this.setState({ index: index })
         console.log(index)
-        /*
-        if(this.state.newyears == 1){
-            if(index == 1){
-                this.setState({ num: 6 })
-            }else if(index == 2){
-                this.setState({ num: 9 })
-            }else if(index == 3){
-                this.setState({ num: 4 })
-            }else if(index == 4){
-                this.setState({ num: 2 })
-            }else{
-                this.setState({ num: 0})
-            }
-        }else{
-            if(index == 1){
-                this.setState({ num: 9 })
-                this.setState({ img: 'icon_coupon@2x.png' })
-            }else if(index == 2){
-                this.setState({ num: 4 })
-                this.setState({ img: 'icon_coupon@2x.png' })
-            }else if(index == 3){
-                this.setState({ num: 2 })
-                this.setState({ img: 'icon_coupon_ed@2x.png' })
-            }else{
-                this.setState({ num: 6 })
-                this.setState({ img: 'icon_coupon@2x.png' })
-            }
-        }
-        */
     }
 
-    aliveYuyue= (id,state,link,form) => {
-        var user = Object.keys(this.state.userInfo).length
-        this.setState({alive_id:id,alive_state:state,alive_link:link})
-        if(user){
-            //用户已经登陆（查看用户是否已经关注我们的公众号）
-            careGzh()
-                .then(careRes => {
-                    //查看用户是否关注
-                    if(careRes.state == 1){
-                        //用户未关注
-                        //判断是否是会员
-                        if (this.state.userInfo && this.state.userInfo.lian) {
-                            //会员
-                            if(state != 0){
-                                //已经预约
-                                Taro.navigateTo({ url: "/pages/yuyue-success?id="+id })
-                                return
-                            }
-                            //是否需要表单
-                            if(form == 1){
-                                //Taro.navigateTo({ url: "/pages/yuyue-form?id="+id+"&type=1" })
-                                this.setState({yuyueForm:true})
-                                return
-                            }
-                            alive_yuyue(id)
-                                .then(res => {
-                                    console.log(res)
-                                    if(res.code === 1){
-                                        this.alive()//更新数据
-                                        this.setState({ gz_yuy_warn:true})
-                                        let that = this
-                                        /*
-                                        setTimeout(function(){
-                                            that.setState({ gz_yuy_warn:false})
-                                            Taro.navigateTo({ url: "/pages/yuyue-success?id="+id })
-                                        },1500)
-                                        */
-                                    }else{
-                                        Taro.showToast({
-                                            title: res.msg,
-                                            icon: 'none', //图标,
-                                            duration: 2000, //延迟时间,
-                                            mask: true //显示透明蒙层，防止触摸穿透,
-                                        })
-                                    }
-
-                                }).catch(err => {
-                                console.log(err)
-                                Taro.showToast({
-                                    title: err.msg ? err.msg : String(err), //提示的内容,
-                                    icon: 'none', //图标,
-                                    duration: 2000, //延迟时间,
-                                    mask: true, //显示透明蒙层，防止触摸穿透,
-                                })
-                            })
-                        }else if(this.state.userInfo) {
-                            //非会员
-                            if(state != 0){
-                                Taro.navigateTo({ url: link})
-                                return false
-                            }
-                            //是否需要表单
-                            if(form == 1){
-                                //Taro.navigateTo({ url: "/pages/yuyue-form?id="+id+"&type=1" })
-                                this.setState({yuyueForm:true})
-                                return
-                            }
-                            alive_yuyue(id)
-                                .then(res => {
-                                    console.log(res)
-                                    if(res.code === 1){
-                                        this.alive()//更新数据
-                                        this.setState({ gz_yuy_warn:true})
-                                        let that = this
-                                        /*
-                                        setTimeout(function(){
-                                            that.setState({ gz_yuy_warn:false})
-                                            Taro.navigateTo({ url: link})
-                                        },1500)
-                                        */
-                                    }else{
-                                        Taro.showToast({
-                                            title: res.msg,
-                                            icon: 'none', //图标,
-                                            duration: 2000, //延迟时间,
-                                            mask: true //显示透明蒙层，防止触摸穿透,
-                                        })
-                                    }
-                                }).catch(err => {
-                                console.log(err)
-                                Taro.showToast({
-                                    title: err.msg ? err.msg : String(err), //提示的内容,
-                                    icon: 'none', //图标,
-                                    duration: 2000, //延迟时间,
-                                    mask: true, //显示透明蒙层，防止触摸穿透,
-                                })
-                            })
-                        }else{
-                            setCookie("Prev_URL", window.location.href)
-                            Taro.redirectTo({ url: "/pages/author" })
-                        }
-                    }else{
-                        //用户已关注
-                        if (this.state.userInfo && this.state.userInfo.lian) {
-                            //会员
-                            if(state != 0){
-                                Taro.navigateTo({ url: "/pages/yuyue-success?id="+id })
-                                return
-                            }
-                            //是否需要表单
-                            if(form == 1){
-                                //Taro.navigateTo({ url: "/pages/yuyue-form?id="+id+"&type=1" })
-                                this.setState({yuyueForm:true})
-                                return
-                            }
-                            alive_yuyue(id)
-                                .then(res => {
-                                    console.log(res)
-                                    if(res.code === 1){
-                                        this.alive()//更新数据
-                                        this.setState({ yuyue_warn:true})
-                                        let that = this
-                                        setTimeout(function(){
-                                            that.setState({ yuyue_warn:false})
-                                            Taro.navigateTo({ url: "/pages/yuyue-success?id="+id })
-                                        },1000)
-                                    }else{
-                                        Taro.showToast({
-                                            title: res.msg,
-                                            icon: 'none', //图标,
-                                            duration: 2000, //延迟时间,
-                                            mask: true //显示透明蒙层，防止触摸穿透,
-                                        })
-                                    }
-
-                                }).catch(err => {
-                                console.log(err)
-                                Taro.showToast({
-                                    title: err.msg ? err.msg : String(err), //提示的内容,
-                                    icon: 'none', //图标,
-                                    duration: 2000, //延迟时间,
-                                    mask: true, //显示透明蒙层，防止触摸穿透,
-                                })
-                            })
-                        }else if(this.state.userInfo) {
-                            //非会员
-                            if(state != 0){
-                                Taro.navigateTo({ url: link})
-                                return false
-                            }
-                            //是否需要表单
-                            if(form == 1){
-                                //Taro.navigateTo({ url: "/pages/yuyue-form?id="+id+"&type=1" })
-                                this.setState({yuyueForm:true})
-                                return
-                            }
-                            alive_yuyue(id)
-                                .then(res => {
-                                    console.log(res)
-                                    if(res.code === 1){
-                                        this.alive()//更新数据
-                                        this.setState({ yuyue_warn:true})
-                                        let that = this
-                                        setTimeout(function(){
-                                            that.setState({ yuyue_warn:false})
-                                            Taro.navigateTo({ url: link})
-                                        },1000)
-                                    }else{
-                                        Taro.showToast({
-                                            title: res.msg,
-                                            icon: 'none', //图标,
-                                            duration: 2000, //延迟时间,
-                                            mask: true //显示透明蒙层，防止触摸穿透,
-                                        })
-                                    }
-                                }).catch(err => {
-                                console.log(err)
-                                Taro.showToast({
-                                    title: err.msg ? err.msg : String(err), //提示的内容,
-                                    icon: 'none', //图标,
-                                    duration: 2000, //延迟时间,
-                                    mask: true, //显示透明蒙层，防止触摸穿透,
-                                })
-                            })
-                        }else{
-                            setCookie("Prev_URL", window.location.href)
-                            Taro.redirectTo({ url: "/pages/author" })
-                        }
-                    }
-                })
-                .catch(err => {
-                    console.log(err)
-                    Taro.showToast({
-                        title: err.msg ? err.msg : String(err), //提示的内容,
-                        icon: 'none', //图标,
-                        duration: 2000, //延迟时间,
-                        mask: true, //显示透明蒙层，防止触摸穿透,
-                    })
-                })
-        }else{
-            //用户未登陆
-            setCookie("Prev_URL", window.location.href)
-            Taro.redirectTo({ url: "/pages/author" })
-        }
-    }
 
     close1 = () => {
         this.setState({ gz_yuy_warn:false})
@@ -974,57 +740,7 @@ class Index extends Component {
             </View>
           </View>
           */}
-           <Chunktitle title_mian='热门直播' title__subhead='贴紧趋势，掌握硬核知识与专业实务，应对工作游刃有余'></Chunktitle>
-          {
-              !!this.state.aliveList.length && (
-              <View className='hot-alive'>
-                <ScrollView scrollX>
-                    <View className='scroll-yuyue-alive'>
-                    {
-                        this.state.aliveList.map(item => (
-                            <View className='yuyue-alive' onClick={this.aliveYuyue.bind( this,item.id,item.status,item.link ,item.form)}>
-                                <View className='img-box'>
-                                    <Image className='img-box__img' src={item.desc || item.desc || 'https://oss.mylyh.com/miniapp/wx_img/share/icon_ll_logo.png'} />
-                                  {item.status == 0 &&(
-                                  <View className='img-status'>预告</View>
-                                  )}
-                                  {item.status == 1 &&(
-                                  <View className='img-status'>预告</View>
-                                  )}
-                                  {item.status == 2 &&(
-                                  <View className='img-status img-state-red'><View className='icon icon-playing'></View>直播中</View>
-                                  )}
-                                  {item.status == 3 &&(
-                                  <View className='img-status img-state-blue'>回放</View>
-                                  )}
-              {/*
-                                    <View className='img-box__ft'>
-                                        {item.status != 3 && <View className='alive-num'>{item.num} 人已预约</View>}
-                                    </View>
-                                    */}
-                                </View>
-                                <View className='free-course__title ellipsis-2'>{item.title}</View>
-                                {item.status != 3 && <View className='open-time'>{item.start_time} 开播</View>}
-                                {item.status == 0 &&(
-                                    <View className='unyuyue-button'>立即预约</View>
-                                )}
-                                {item.status == 1 &&(
-                                    <View className='yuyue-button' >已预约</View>
-                                 )}
-                                {item.status == 2 &&(
-                                  <View className='unyuyue-button' >直播中</View>
-                                )}
-                                {item.status == 3 &&(
-                                  <View className='unyuyue-button' >查看回放</View>
-                                )}
-                            </View>
-                        ))
-                    }
-                    </View>
-                </ScrollView>
-              </View>
-            )
-          }
+        
 
           {/* 线下学院------------月享卡不享有该权益 */}
           {this.state.index != 0 &&
@@ -1091,13 +807,6 @@ class Index extends Component {
             <img src='https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv2.2/pic_note@2x.png'/>
           </View>
 
-          {/*在线预归类*/}
-          <Chunktitle title_mian='在线预归类服务' title__subhead='专家赋能，为工作减负提效'></Chunktitle>
-          <Navigator
-            url='http://devadmin.mylyh.com/weapp/wadvice/advice_vip'
-            className='ll-cells ll-cell--noborder guilei' >
-                <img src='https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv2.2/pic_card_gu@2x.png'/>
-          </Navigator>
 
             {/* 专家服务 */}
           <Chunktitle title_mian='连线专家' title__subhead='解决燃眉之急,启发新思路'></Chunktitle>
@@ -1204,18 +913,7 @@ class Index extends Component {
             )}
           </View>
           */}
-      {/*
-          <View className='banner1'>
-            <Image className='img' src={this.props.userStore.imgUrl + 'bg_card_s@2x.png'}></Image>
-            <View className='banner1__left'>
-              <Text className='mian__docs'>9张链享体验卡</Text>
-              <Text className='subhead__docs'>开通即可送给好友</Text>
-            </View>
-            <View className='banner1__right'>
-              立即开通
-            </View>
-          </View>
-          */}
+ 
 
           <Chunktitle title_mian='关于链链知迅' title__subhead='about us'></Chunktitle>
           <View className='about-us'>
@@ -1232,77 +930,9 @@ class Index extends Component {
             <View className='notice__subhead'> 1.会员卡为虚拟产品，一经出售暂不支持退款，敬请谅解。</View>
             <View className='notice__subhead'>2.购买季卡可提供发票。</View>
           </View>
-
-          { this.state.yuyue_warn &&
-          <View className='yuyue-opacity'>
-              <View className='yuyue-warn' >
-              <Image className='img' src='https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv2.2/icon_suc%402x.png' />
-              <View className='text--black'>预约成功</View>
-              <View className='onebyone'>我们会在开播前提醒您</View>
-              {!this.state.userInfo.lian &&
-              <View className='onebyone'>3s后跳转到直播间</View>
-              }
-          </View>
-          </View>
-          }
-
-          {this.state.gz_yuy_warn &&
-          <View className='yuyue-opacity1'>
-              <View className='yuyue-warn1' >
-              <Image className='img' src='https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv2.2/icon_suc%402x.png' />
-              <View className='text--black'>预约成功</View>
-              <View className='onebyone'>为了不错过您预约的直播，请关注我们，我们会在开播前提醒您。</View>
-          <View className='ercode'>
-              <Image className='gzh-img' src="https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/link_gzh%402x.png" />
-              </View>
-              <View className='care'>长按关注我们</View>
-              </View>
-              <View className="close-img" onClick={this.close1.bind()}> <Image src="https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv2.2/icon_close2%402x.png"/></View>
-
-              </View>
-          }
-
         </ScrollView>
 
         <Tabbar></Tabbar>
-      {this.state.yuyueForm &&
-      <View className='pupop-box'>
-          <View className={['pupopBack']} > </View>
-          <View className='pupop'>
-          <View className='pupop_title'>
-          <View className='title_text'>为了带给您更好的服务</View>
-          <View className='title_text'>请先完善资料</View>
-          {/*<Image className='title_icon1' src={this.props.userStore.imgUrl + 'circle.png'} />
-                            <Image className='title_icon2' src={this.props.userStore.imgUrl + 'circle.png'} />
-                            */}
-      </View>
-      <View className='form'>
-          <View className='formItem'>
-          <View className='input-box'>
-          <Input data-lable='name' value={this.state.form.name} onChange={handleInput.bind(this, "form.name")} placeholder='姓名' />
-          </View>
-          </View>
-          <View className='formItem'>
-          <View className='input-box'>
-          <Input type='tel' data-lable='phone' value={this.state.form.phone} onChange={handleInput.bind(this, "form.phone")} placeholder='手机号码' />
-          </View>
-          </View>
-          <View className='formItem'>
-          <View className='input-box'>
-          <Input data-lable='company' value={this.state.form.company} onChange={handleInput.bind(this, "form.company")} placeholder='所在公司' />
-          </View>
-          </View>
-          <View className='formItem'>
-          <View className='input-box'>
-          <Input data-lable='position' value={this.state.form.position} onChange={handleInput.bind(this, "form.position")} placeholder='职位' />
-          </View>
-          </View>
-          </View>
-          <View className='button unique' onClick={this.service}>提交并预约</View>
-          <View className='close-button' onClick={this.close}>取消</View>
-          </View>
-          </View>
-      }
         {/* 首次加载 */}
         {this.state.isFirstLoding && (
           <AtActivityIndicator size={36}></AtActivityIndicator>

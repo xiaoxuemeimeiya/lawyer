@@ -96,8 +96,6 @@ class App extends Component {
       'pages/yuyue-form',
       'pages/videoVip-exchange',
       'pages/member-card',
-      'pages/live-list',
-      'pages/live-detail',
       'pages/expert-list',
       'pages/social-list',
     ],

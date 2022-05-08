@@ -65,6 +65,7 @@ class Index extends Component {
           </View>
 
           {/* 收益-储值卡 */}
+          {/*
           <View className='profit' >
             <Navigator url='/pages/profit' className='profit-item'>
               <View className='profit__title'>收益</View>
@@ -75,8 +76,10 @@ class Index extends Component {
               <View className='profit__price'>{this.state.userInfo.club_card || 0}</View>
             </Navigator>
           </View>
+        */}
 
           {/* 链链俱乐部入口 */}
+          {/*
           {
             this.state.userInfo.isClubVIP !== null && (
               <Navigator url='/pages/club' className='ll-cells ll-cell--noborder club'>
@@ -114,6 +117,7 @@ class Index extends Component {
               </Navigator>
             )
           }
+        */}
 
           <View className='ll-cells ll-cell--noborder list'>
             <Navigator url='/pages/my-course?tabbarShow=false' className='ll-cell ll-cell--access' hoverClass='ll-hover'>

@@ -100,7 +100,7 @@ class Index extends Component {
           <View onClick={this.tolink.bind(this, '/pages/my-course')} className='ll-cell__bd'>
 
             <View className={['icon', this.state.url === '/pages/my-course' ? 'icon-bottom-5b' : 'icon-bottom-5a']}></View>
-            <View className={['tabbar__title', this.state.url === '/pages/my-course' ? 'color-primary' : '']}>我的学习</View>
+            <View className={['tabbar__title', this.state.url === '/pages/my-course' ? 'color-primary' : '']}>发需求</View>
 
           </View>
           <View onClick={this.tolink.bind(this, '/pages/my')} className='ll-cell__bd'>

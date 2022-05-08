@@ -31,7 +31,7 @@ import "./index.scss"
 
 @Share()
 @inject('userStore')
-@Title("LINK.链学堂")
+@Title("智汇圈")
 class Index extends Component {
   config = {
     navigationBarTitleText: "LINK.链学堂"
