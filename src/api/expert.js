@@ -2,6 +2,18 @@ import Request from '../utils/request'
 
 const request = new Request()
 
+
+/**
+ * 专家主页详细信息
+ *
+ * @export
+ * @param {*} us_id
+ * @returns
+ */
+ export function getExpert(us_id) {
+  return request.post('/miniapp/experts/list', { us_id })
+}
+
 /**
  * 专家主页详细信息
  *
@@ -21,7 +33,7 @@ export function getExpertDetail(us_id) {
  * @returns
  */
 export function getExpertInfoDetail(us_id) {
-  return request.post('/miniapp/advert/detail', { us_id })
+  return request.post('/miniapp/advert/expert_detail', { us_id })
 }
 
 /**

@@ -3,6 +3,7 @@ import { View, ScrollView, Image, Navigator, Text } from "@tarojs/components"
 
 import { AtActivityIndicator } from "taro-ui"
 import {getFamous, getFreeCourse, getMonths} from "../../api/knowledge"
+import {getExpert} from "../../api/expert"
 import {member_reccommend,ActiveList} from "../../api/videoVip"
 import { onScrollToLower } from "../../utils/scroll"
 import ScrollEnd from "../../components/ScrollEnd"
@@ -13,10 +14,10 @@ import Title from "../../components/Title"
 import "./index.scss"
 
 @Share()
-@Title("本月上线")
+@Title("专家列表")
 class Index extends Component {
     config = {
-        navigationBarTitleText: "本月上线"
+        navigationBarTitleText: "专家列表"
     }
 
     constructor() {
@@ -30,26 +31,11 @@ class Index extends Component {
             page: 1,
             /** scroll-view 是否滚动到底部 */
             isScrollEnd: false,
-            newyears:1,
         }
     }
 
     componentDidMount() {
         this.getDataList()
-        this.getTimestamp()
-    }
-    /**获取优惠时间时间**/
-    getTimestamp() { //把时间日期转成时间戳
-        //优惠开始时间(2021-01-08 23:59:59)
-        var starttime = (new Date('2021/01/28 10:00:00')).getTime() / 1000
-        var endtime = (new Date('2021/02/17 23:59:59')).getTime() / 1000
-        var time = (new Date()).getTime() / 1000
-        if(time >= starttime && time <= endtime){
-            //活动期间
-            this.setState({ newyears: 1 })
-        }else{
-            this.setState({ newyears: 0 })
-        }
     }
 
     /**
@@ -65,103 +51,54 @@ class Index extends Component {
         const type = this.$router.params.type ? this.$router.params.type : ''
         console.log(type)
 
-        if(type == 2){
-            return ActiveList(this.state.page, this.state.type)
-                .then(res => {
-                    console.log("TCL: getExpertsList -> res", res)
+        
+        return getExpert(this.state.page, this.state.type)
+            .then(res => {
+                console.log("TCL: getExpertsList -> res", res)
 
-                    // 判断是否到底
-                    if (res.data && res.data.length >= 15) {
-                        this.setState({ isScrollEnd: false })
-                    } else {
-                        this.setState({ isScrollEnd: true })
-                    }
+                // 判断是否到底
+                if (res.data && res.data.length >= 15) {
+                    this.setState({ isScrollEnd: false })
+                } else {
+                    this.setState({ isScrollEnd: true })
+                }
 
-                    // 专家列表数据
-                    if (this.state.page == 1) {
-                        // 首次请求
-                        this.setState({
-                            dataList: res.data,
-                            page: 2 // 默认为1,这里 1+1
-                        })
-                        console.log(777777)
-                    } else {
-                        // 非首次请求
-                        this.setState(
-                            {
-                                dataList: [...this.state.dataList, ...res.data],
-                                page: this.state.page + 1
-                            },
-                            () => {
-                                console.log(
-                                    "TCL: getExpertsList -> this.state.page",
-                                    this.state.page
-                                )
-                            }
-                        )
-                        console.log(88888)
-                    }
-
-                    // 取消显示首次loading
-                    this.state.isFirstLoding && this.setState({ isFirstLoding: false })
-                })
-                .catch(err => {
-                    Taro.showToast({
-                        title: err.msg ? err.msg : err + "", //提示的内容,
-                        icon: "none", //图标,
-                        duration: 2000, //延迟时间,
-                        mask: true //显示透明蒙层，防止触摸穿透,
+                // 专家列表数据
+                if (this.state.page == 1) {
+                    // 首次请求
+                    this.setState({
+                        dataList: res.data,
+                        page: 2 // 默认为1,这里 1+1
                     })
-                })
-        }else{
-            return getMonths(this.state.page, this.state.type)
-                .then(res => {
-                    console.log("TCL: getExpertsList -> res", res)
+                    console.log(777777)
+                } else {
+                    // 非首次请求
+                    this.setState(
+                        {
+                            dataList: [...this.state.dataList, ...res.data],
+                            page: this.state.page + 1
+                        },
+                        () => {
+                            console.log(
+                                "TCL: getExpertsList -> this.state.page",
+                                this.state.page
+                            )
+                        }
+                    )
+                    console.log(88888)
+                }
 
-                    // 判断是否到底
-                    if (res.data && res.data.length >= 15) {
-                        this.setState({ isScrollEnd: false })
-                    } else {
-                        this.setState({ isScrollEnd: true })
-                    }
-
-                    // 专家列表数据
-                    if (this.state.page == 1) {
-                        // 首次请求
-                        this.setState({
-                            dataList: res.data,
-                            page: 2 // 默认为1,这里 1+1
-                        })
-                        console.log(777777)
-                    } else {
-                        // 非首次请求
-                        this.setState(
-                            {
-                                dataList: [...this.state.dataList, ...res.data],
-                                page: this.state.page + 1
-                            },
-                            () => {
-                                console.log(
-                                    "TCL: getExpertsList -> this.state.page",
-                                    this.state.page
-                                )
-                            }
-                        )
-                        console.log(88888)
-                    }
-
-                    // 取消显示首次loading
-                    this.state.isFirstLoding && this.setState({ isFirstLoding: false })
+                // 取消显示首次loading
+                this.state.isFirstLoding && this.setState({ isFirstLoding: false })
+            })
+            .catch(err => {
+                Taro.showToast({
+                    title: err.msg ? err.msg : err + "", //提示的内容,
+                    icon: "none", //图标,
+                    duration: 2000, //延迟时间,
+                    mask: true //显示透明蒙层，防止触摸穿透,
                 })
-                .catch(err => {
-                    Taro.showToast({
-                        title: err.msg ? err.msg : err + "", //提示的内容,
-                        icon: "none", //图标,
-                        duration: 2000, //延迟时间,
-                        mask: true //显示透明蒙层，防止触摸穿透,
-                    })
-                })
-        }
+            })
 
     }
 
@@ -189,42 +126,55 @@ class Index extends Component {
             >
             {/* media */}
 
-        {this.state.dataList && this.state.dataList.map(item => (
-        <Navigator
-              url={`/pages/knowledge-online-detail?id=${item.id}`}
-              className='ll-cells ll-cell--noborder media'
-              key={item.id}
-            >
-              <View className='ll-cell ll-cell--primary media__bd'>
-                <View className='ll-cell__hd'>
-                  <Image className='icon_audio' src={item.video == 2 ? 'https://oss.mylyh.com/miniapp/versionv3.0/icon_audio%402x.png' : 'https://oss.mylyh.com/miniapp/versionv3.0/icon_audio1%402x.png'}></Image>
-                  <Image
-                    className='media__img'
-                    src={
-                      item.cover_img ||
-                      "https://oss.mylyh.com/miniapp/wx_img/share/icon_ll_logo.png"
-                    }
-                  />
-                </View>
-                <View className='ll-cell__bd'>
-                  <View className='media__title ellipsis-2'>{item.name}</View>
-                  <View className='media__small'>{item.us_regist_name + "·" + item.category}</View>
-                  <View className='icon-see'>
-                    <Image className='media__img' src='https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/new_year_festival/icon_see%402x.png'/>
-                    <Text>{item.fake_data}人次</Text>
-                    <View className='media__ft'>
-                        <View className='price--hot'>{'¥'+(item.price || 999)}</View>
-                        { item.type==1 &&
-                        <View className='label--freeIcon'><img src='https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv2.2/pic_vip_1%402x.png'/></View>
-                        }
-                     </View>
-                  </View>
-                </View>
-
-              </View>
+       
+        
+            <View className="expert-list">
+                {this.state.dataList && this.state.dataList.map(item => (
+                <Navigator
+                url={`/pages/expert-detail?id=`+item.us_id}
+                className='ll-cells ll-cell--noborder media expert-item'
+                key={item.id}
+                >
+                    <View className="ll-cell ll-cell--noborder ll-cell--primary">
+                        <View className="ll-cell__hd">
+                            <Image className="expert-avatar skeleton-radius" src={item.header_img || "https://oss.mylyh.com/miniapp/wx_img/icon/icon_ll_logo.png?text=%E5%8D%A0%E4%BD%8D"}/>
+                        </View>
+                        <View className="ll-cell__bd" style="padding-top:7px;">
+                            <View>
+                                <text className="expert-item__name skeleton-rect">{item.us_regist_name}</text>
+                                <View className="icon icon-expert-authentication skeleton-rect"></View>
+                                {/*<View className="icon icon-activity skeleton-rect" style="margin-left: 4px;margin-top:2px;"></View>*/}
+                            </View>
+                            <View className="expert-item__position skeleton-rect">{item.chainman}</View>
+                        </View>
+                    </View>
+                    <View className="ll-cell ll-cell--noborder expert-item__bd">
+                        <View className="ll-cell__bd">
+                            <View className="color-small expert-item__introduce ellipsis-3 skeleton-rect">{item.us_workon}</View>
+                            <View className="expert-item__label">
+                            {item.tag.length > 0 && item.tag.map(itemName => (
+                            <Text className='skeleton-rect'>
+                                {itemName}
+                            </Text>
+                            ))}
+                            </View>
+                            <View>
+                                <View className="expert-item__ft skeleton-rect">
+                                    <text>focusnum</text>
+                                    人关注他
+                                </View>
+                                <View className="expert-item__ft skeleton-rect">
+                                    他帮助了
+                                    <text>help_num</text>
+                                    人
+                                </View>
+                            </View>
+                        </View>
+                    </View>
             </Navigator>
-          ))}
-
+            ))}
+        </View>  
+          
         {/* 上拉加载显示 */}
         <ScrollEnd isScrollEnd={this.state.isScrollEnd}></ScrollEnd>
 

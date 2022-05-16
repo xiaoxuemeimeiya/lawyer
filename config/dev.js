@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     NODE_ENV: '"development"',
-    API:'"//devuser.mylyh.com"'
+    API:'"//zhihq.mylyh.com"'
   },
   defineConstants: {
   },
