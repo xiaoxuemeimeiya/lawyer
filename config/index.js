@@ -102,7 +102,7 @@ const config = {
     },
     devServer: {
       port: 80,
-      host: 'wap.mylyh.com',
+      host: 'lay.mylyh.com',
       // port: 800,
       // host: '192.168.137.1',
       // proxy: {
