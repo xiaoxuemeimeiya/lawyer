@@ -1017,7 +1017,6 @@ class Index extends Component {
               <View className='xiazai-submit' onClick={this.openvip}>立即开通</View>
             </View>
          </View>
-        <Gzh></Gzh>
         <Tg1
             course={this.state.course}
         ></Tg1>

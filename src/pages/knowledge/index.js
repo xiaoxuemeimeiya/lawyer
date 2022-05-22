@@ -421,7 +421,6 @@ class Index extends Component {
             )}
           </ScrollView>
         </View>
-        <Gzh></Gzh>
         <Tg></Tg>
         {/* 底部导航栏 */}
         <Tabbar></Tabbar>

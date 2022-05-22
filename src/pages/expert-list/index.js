@@ -150,24 +150,28 @@ class Index extends Component {
                     </View>
                     <View className="ll-cell ll-cell--noborder expert-item__bd">
                         <View className="ll-cell__bd">
-                            <View className="color-small expert-item__introduce ellipsis-3 skeleton-rect">{item.us_workon}</View>
-                            <View className="expert-item__label">
+                        <View className="expert-item__label">
                             {item.tag.length > 0 && item.tag.map(itemName => (
                             <Text className='skeleton-rect'>
                                 {itemName}
                             </Text>
                             ))}
                             </View>
+                            <View className="color-small expert-item__introduce ellipsis-3 skeleton-rect">{item.us_workon}</View>
+                            
                             <View>
+                                {/*
                                 <View className="expert-item__ft skeleton-rect">
                                     <text>focusnum</text>
                                     人关注他
                                 </View>
+                                
                                 <View className="expert-item__ft skeleton-rect">
                                     他帮助了
                                     <text>help_num</text>
                                     人
                                 </View>
+                            */}
                             </View>
                         </View>
                     </View>

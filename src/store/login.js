@@ -58,12 +58,12 @@ const loginStore = observable({
           duration: 1000
         })
         const { data } = await my()
-        const my_famous = await get_my_famous()
-        data.my_famous = []
+        //const my_famous = await get_my_famous()
+        //data.my_famous = []
         // 和后台沟通，这个需要除以100
-        data.club_account = (data.club_account / 100).toFixed(2)
-        data.my_famous.push(...my_famous.data)
-        data.isClubVIP = isClubVIP(data)
+        //data.club_account = (data.club_account / 100).toFixed(2)
+        //data.my_famous.push(...my_famous.data)
+        //data.isClubVIP = isClubVIP(data)
 
         /** 加密数据 */
         const a = encrypt(data)

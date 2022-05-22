@@ -84,18 +84,18 @@ class Index extends Component {
    hideContactExperts = () => {
     this.setState({isShowContactExperts:false})
   }
-  // 选择联系专家的方式
+  // 选择联系专家的方式d
   selectContactExpertsType = (event) =>{
 		console.log("TCL: selectContactExpertsType -> event", event)
-    const type=event.currentTarget.dataset.type;
+    const type=event;
     this.setState({selectContactExpertsType:type})
   }
   // 选择联系专家-确定
   pay = () => {
-    if(this.state.selectContactExpertsType === 0 ){
-      wx.navigateTo({ url: '/pages/expert-voice-pay/expert-voice-pay?id='+this.data.expertId });
-    }else if(this.state.selectContactExpertsType === 1 ){
-      wx.navigateTo({ url: '/pages/expert-questioning/expert-questioning?id='+this.data.expertId });
+    if(this.state.selectContactExpertsType == 0 ){
+      Taro.navigateTo({ url: '/pages/expert-voice-pay/expert-voice-pay?id='+this.data.expertId });
+    }else if(this.state.selectContactExpertsType == 1 ){
+      this.setState({isShowContactExperts:true})
     }
   }
 
@@ -173,7 +173,7 @@ class Index extends Component {
               </View>
               <View className="ll-cell__bd"></View>
               <View className="ll-cell__ft">
-                <View className="icon icon-close" bindtap={this.hideContactExperts}></View>
+                <View className="icon icon-close" onClick={this.hideContactExperts}></View>
               </View>
             </View>
             <View className="ll-cell">
@@ -186,20 +186,20 @@ class Index extends Component {
               <view class="ll-cell__bd">
                 <view class="concat-expert__h1 color-black">选择约聊方式</view>
                 <view class="concat-expert-type">
-                  <view bindtap={this.selectContactExpertsType} className={["concat-expert-type__item",this.state.selectContactExpertsType && 'active']}>
+                  <view onClick={this.selectContactExpertsType.bind(this, 0)} className={['concat-expert-type__item',this.state.selectContactExpertsType == 0 && 'active']}>
                     <view class="concat-expert-type__title color-black">线上问答</view>
                     <view class="concat-expert-type__small color-gray">线上提问</view>
                     <view class="concat-expert-type__small color-gray">专家回复</view>
                     <view class="icon icon-right"></view>
                   </view>
-                  <view className="concat-expert-type__item">
-                    <view class="concat-expert-type__title color-gray">线下约见</view>
-                    <view class="concat-expert-type__small color-gray">敬请期待</view>
+                  <view onClick={this.selectContactExpertsType.bind(this, 1)} className={['concat-expert-type__item',this.state.selectContactExpertsType == 1 && 'active']}>
+                    <view class="concat-expert-type__title color-black">取得联系</view>
+                    <view class="concat-expert-type__small color-gray">微信对接</view>
                     <view class="icon icon-right"></view>
                   </view>
                 </view>
                 <view class="concat-expert__footer">
-                  <button class="btn btn-primary" bindtap="pay">确定</button>
+                  <button class="btn btn-primary" onClick={this.pay}>确定</button>
                 </view>
               </view>
             </view>
