@@ -76,7 +76,6 @@ class App extends Component {
       'pages/videoVip-free',
       'pages/videoVip',
       'pages/knowledge-list',
-      'pages/knowledge-famouse',
       'pages/supervisor',
       'pages/knowledge-active',
       'pages/my-article',

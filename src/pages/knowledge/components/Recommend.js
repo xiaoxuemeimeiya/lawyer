@@ -148,7 +148,7 @@ class Index extends Component {
           }
          </View>
           ))}
-        <Navigator url='/pages/knowledge-famouse' className='btn btn-more'>查看更多</Navigator>
+        <Navigator url='/pages/knowledge-list' className='btn btn-more'>查看更多</Navigator>
       </View>
 
         {/* 专家服务 */}

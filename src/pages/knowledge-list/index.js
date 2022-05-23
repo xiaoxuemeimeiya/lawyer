@@ -2,7 +2,7 @@ import Taro, { Component } from "@tarojs/taro"
 import { View, ScrollView, Image, Navigator, Text } from "@tarojs/components"
 
 import { AtActivityIndicator } from "taro-ui"
-import {getFamous, getFreeCourse, getMonths} from "../../api/knowledge"
+import {getOnline} from "../../api/knowledge"
 import {member_reccommend,ActiveList} from "../../api/videoVip"
 import { onScrollToLower } from "../../utils/scroll"
 import ScrollEnd from "../../components/ScrollEnd"
@@ -13,10 +13,10 @@ import Title from "../../components/Title"
 import "./index.scss"
 
 @Share()
-@Title("本月上线")
+@Title("精品学堂")
 class Index extends Component {
     config = {
-        navigationBarTitleText: "本月上线"
+        navigationBarTitleText: "精品学堂"
     }
 
     constructor() {
@@ -30,26 +30,11 @@ class Index extends Component {
             page: 1,
             /** scroll-view 是否滚动到底部 */
             isScrollEnd: false,
-            newyears:1,
         }
     }
 
     componentDidMount() {
         this.getDataList()
-        this.getTimestamp()
-    }
-    /**获取优惠时间时间**/
-    getTimestamp() { //把时间日期转成时间戳
-        //优惠开始时间(2021-01-08 23:59:59)
-        var starttime = (new Date('2021/01/28 10:00:00')).getTime() / 1000
-        var endtime = (new Date('2021/02/17 23:59:59')).getTime() / 1000
-        var time = (new Date()).getTime() / 1000
-        if(time >= starttime && time <= endtime){
-            //活动期间
-            this.setState({ newyears: 1 })
-        }else{
-            this.setState({ newyears: 0 })
-        }
     }
 
     /**
@@ -62,106 +47,54 @@ class Index extends Component {
 
     getData() {
         if (this.state.isScrollEnd) return
-        const type = this.$router.params.type ? this.$router.params.type : ''
-        console.log(type)
 
-        if(type == 2){
-            return ActiveList(this.state.page, this.state.type)
-                .then(res => {
-                    console.log("TCL: getExpertsList -> res", res)
+        return getOnline(this.state.page, 1)
+            .then(res => {
+                console.log("TCL: getExpertsList -> res", res)
 
-                    // 判断是否到底
-                    if (res.data && res.data.length >= 15) {
-                        this.setState({ isScrollEnd: false })
-                    } else {
-                        this.setState({ isScrollEnd: true })
-                    }
+                // 判断是否到底
+                if (res.data.course && res.data.course.length >= 15) {
+                    this.setState({ isScrollEnd: false })
+                } else {
+                    this.setState({ isScrollEnd: true })
+                }
 
-                    // 专家列表数据
-                    if (this.state.page == 1) {
-                        // 首次请求
-                        this.setState({
-                            dataList: res.data,
-                            page: 2 // 默认为1,这里 1+1
-                        })
-                        console.log(777777)
-                    } else {
-                        // 非首次请求
-                        this.setState(
-                            {
-                                dataList: [...this.state.dataList, ...res.data],
-                                page: this.state.page + 1
-                            },
-                            () => {
-                                console.log(
-                                    "TCL: getExpertsList -> this.state.page",
-                                    this.state.page
-                                )
-                            }
-                        )
-                        console.log(88888)
-                    }
-
-                    // 取消显示首次loading
-                    this.state.isFirstLoding && this.setState({ isFirstLoding: false })
-                })
-                .catch(err => {
-                    Taro.showToast({
-                        title: err.msg ? err.msg : err + "", //提示的内容,
-                        icon: "none", //图标,
-                        duration: 2000, //延迟时间,
-                        mask: true //显示透明蒙层，防止触摸穿透,
+                // 专家列表数据
+                if (this.state.page == 1) {
+                    // 首次请求
+                    this.setState({
+                        dataList: res.data.course,
+                        page: 2 // 默认为1,这里 1+1
                     })
-                })
-        }else{
-            return getMonths(this.state.page, this.state.type)
-                .then(res => {
-                    console.log("TCL: getExpertsList -> res", res)
+                    console.log(777777)
+                } else {
+                    // 非首次请求
+                    this.setState(
+                        {
+                            dataList: [...this.state.dataList, ...res.data.course],
+                            page: this.state.page + 1
+                        },
+                        () => {
+                            console.log(
+                                "TCL: getExpertsList -> this.state.page",
+                                this.state.page
+                            )
+                        }
+                    )
+                    console.log(88888)
+                }
 
-                    // 判断是否到底
-                    if (res.data && res.data.length >= 15) {
-                        this.setState({ isScrollEnd: false })
-                    } else {
-                        this.setState({ isScrollEnd: true })
-                    }
-
-                    // 专家列表数据
-                    if (this.state.page == 1) {
-                        // 首次请求
-                        this.setState({
-                            dataList: res.data,
-                            page: 2 // 默认为1,这里 1+1
-                        })
-                        console.log(777777)
-                    } else {
-                        // 非首次请求
-                        this.setState(
-                            {
-                                dataList: [...this.state.dataList, ...res.data],
-                                page: this.state.page + 1
-                            },
-                            () => {
-                                console.log(
-                                    "TCL: getExpertsList -> this.state.page",
-                                    this.state.page
-                                )
-                            }
-                        )
-                        console.log(88888)
-                    }
-
-                    // 取消显示首次loading
-                    this.state.isFirstLoding && this.setState({ isFirstLoding: false })
+                // 取消显示首次loading
+                this.state.isFirstLoding && this.setState({ isFirstLoding: false })
+            })
+            .catch(err => {
+                Taro.showToast({
+                    title: err.msg ? err.msg : err + "", //提示的内容,
+                    icon: "none", //图标,
+                    duration: 2000, //延迟时间,
+                    mask: true //显示透明蒙层，防止触摸穿透,
                 })
-                .catch(err => {
-                    Taro.showToast({
-                        title: err.msg ? err.msg : err + "", //提示的内容,
-                        icon: "none", //图标,
-                        duration: 2000, //延迟时间,
-                        mask: true //显示透明蒙层，防止触摸穿透,
-                    })
-                })
-        }
+            })
 
     }
 
@@ -217,10 +150,10 @@ class Index extends Component {
                         { item.type==1 &&
                         <View className='label--freeIcon'><img src='https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/versionv2.2/pic_vip_1%402x.png'/></View>
                         }
-                     </View>
+                    </View>
                   </View>
-                </View>
 
+                </View>
               </View>
             </Navigator>
           ))}

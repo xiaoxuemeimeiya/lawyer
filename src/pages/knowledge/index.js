@@ -53,7 +53,6 @@ class Index extends Component {
       /** 线上课程 */
       dataList: [],
       keyword: "",
-      cat_course:[],
       aliveList:[],
       liveList:[],
       /** 菜单 */
@@ -88,11 +87,10 @@ class Index extends Component {
   async getDataList() {
     this.getCategory()
     await this.getSwiper()
-    this.getData()
+    //this.getData()
     this.getoffline()
     this.getExpretListData()
     this.live()
-    this.course_cat()
     // 取消显示首次loading
       this.state.isFirstLoding && this.setState({ isFirstLoding: false })
   }
@@ -104,6 +102,7 @@ class Index extends Component {
         console.log("TCL: Index -> getSwiper -> res", res)
         this.setState({
           swiper: res.data.header, // 轮播图
+          dataList: res.data.courses, // 精品课程
         })
       })
       .catch(err => {
@@ -136,24 +135,6 @@ class Index extends Component {
                 })
             })
 
-    }
-    //推荐
-    course_cat = () => {
-        course_cat()
-            .then(res => {
-                this.setState({
-                    cat_course: res.data.course
-                })
-            })
-            .catch(err => {
-                console.log(err)
-                Taro.showToast({
-                    title: err.msg ? err.msg : String(err), //提示的内容,
-                    icon: 'none', //图标,
-                    duration: 2000, //延迟时间,
-                    mask: true, //显示透明蒙层，防止触摸穿透,
-                })
-            })
     }
 
   /** 专家的服务列表 */
@@ -241,6 +222,7 @@ class Index extends Component {
 
 
   /** 专家课程 */
+  /*
   getData = () => {
     getOnline()
       .then(res => {
@@ -258,6 +240,7 @@ class Index extends Component {
         })
       })
   }
+  */
 
   /** 显示/隐藏底部菜单 */
   showFooter = (flag = true) => {
@@ -386,7 +369,6 @@ class Index extends Component {
                   famous={this.state.famous}
                   offline={this.state.offline}
                   dataList={this.state.dataList}
-                  cat_course={this.state.cat_course}
                   userInfo={this.state.userInfo}
                 ></Recommend>
               )
@@ -408,7 +390,7 @@ class Index extends Component {
               <View className='ll-divider'>链接知识领袖，助力全球贸易</View>
             )}
             {/* 提示为空-快捷键`vi.showNull` */}
-            {!this.state.dataList.length && (
+            {!this.state.offline.length && (
               <View className='null-tip'>
                 <Image
                   className='null-tip__img'

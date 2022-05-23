@@ -493,6 +493,7 @@ class Index extends Component {
           </View>
 
           {/* 学习储值卡 + 优惠券选择 */}
+    {/*
           <View className='ll-cells ll-cell--noborder content discountPart'>
             <View className='ll-cell content__bd'>
               <View className='ll-cell__hd content__label content__label--title'>
@@ -534,6 +535,7 @@ class Index extends Component {
               </View>
             </View>
           </View>
+          */}
           {/* 非优惠计算 */}
           <View className='ll-cells ll-cell--noborder content prizeCount'>
             <View className='ll-cell discountItem'>
@@ -544,6 +546,7 @@ class Index extends Component {
               ¥{this.state.dataList.price}
               </View>
             </View>
+    {/*
             <View className='ll-cell discountItem'>
               <View className='ll-cell__hd content__label content__label--title'>
               学习储蓄卡
@@ -552,6 +555,7 @@ class Index extends Component {
               -¥{this.state.balance}
               </View>
             </View>
+            */}
     {/*
             <View className='ll-cell discountItem'>
               <View className='ll-cell__hd content__label content__label--title'>
@@ -562,6 +566,7 @@ class Index extends Component {
               </View>
             </View>
             */}
+    {/*
             <View className='ll-cell discountItem'>
               <View className='ll-cell__hd content__label content__label--title'>
               优惠券
@@ -570,8 +575,11 @@ class Index extends Component {
               -¥{this.state.selectedCoupon.amount || 0}
               </View>
             </View>
+        */}
+
           </View>
 
+    {/*
           <View className='discountDocs'>
             <View className='docs__title'>
               <Image className='icon' src={this.props.userStore.imgUrl + 'icon_cal.png'} />
@@ -587,7 +595,7 @@ class Index extends Component {
             4.普通用户不享受优惠。
           </View>
           </View>
-
+*/}
           {
             // <Coupon total_fee={this.state.total_fee} couponList={this.state.couponList} couponShow={this.state.couponShow} couponShowHandle={this.couponShowHandle}></Coupon>
             <View className={['couponDialog', !this.state.couponShow ? 'out' : 'in']}>

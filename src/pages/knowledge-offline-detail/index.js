@@ -455,7 +455,6 @@ console.log(this.state.dataList.free_sign)
             !this.state.hideShareTip && <Image src='https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/wx_img/share_tip@2x.png' className='share-tip hide'></Image>
           }
         </View>
-        <Gzh></Gzh>
 
         {/* 首次加载 */}
         {this.state.isFirstLoding && (
