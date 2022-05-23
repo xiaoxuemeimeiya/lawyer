@@ -52,6 +52,7 @@ class Index extends Component {
       offline: [],
       /** 线上课程 */
       dataList: [],
+      courseList:[],
       keyword: "",
       aliveList:[],
       liveList:[],
@@ -222,12 +223,11 @@ class Index extends Component {
 
 
   /** 专家课程 */
-  /*
   getData = () => {
     getOnline()
       .then(res => {
         this.setState({
-          dataList: res.data.course
+          courseList: res.data.course
         })
       })
       .catch(err => {
@@ -240,7 +240,7 @@ class Index extends Component {
         })
       })
   }
-  */
+
 
   /** 显示/隐藏底部菜单 */
   showFooter = (flag = true) => {
@@ -248,7 +248,7 @@ class Index extends Component {
   }
 
   /** 选择菜单 */
-  onChangeMenu = (value) => {
+  onChangeMenu = (value) => {console.log(value)
     if (value === this.state.categories.index) return
 
     this.setState({
@@ -277,7 +277,7 @@ class Index extends Component {
     const $tabbar = document.querySelector('.tabbar')
     if ($end) {
       if (!this.state.loading && document.body.clientHeight - $tabbar.offsetHeight - $end.offsetHeight + 10 > $end.getBoundingClientRect().top) {
-        this.setState({ loading: true }, () => { this.getData() })
+        this.setState({ loading: true }, () => { this.getoffline() })
       }
     }
   }
@@ -378,7 +378,7 @@ class Index extends Component {
             {
               this.state.categories.index !== 0 && (
                 <Online
-                  dataList={this.state.dataList}
+                  dataList={this.state.courseList}
                 ></Online>
               )
             }
