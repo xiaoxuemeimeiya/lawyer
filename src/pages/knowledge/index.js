@@ -224,7 +224,7 @@ class Index extends Component {
 
     getData() {console.log(this.state.isScrollEnd)
         if (this.state.isScrollEnd) return
-        return getOnline(this.state.page1,)
+        return getOnline(this.state.page1,1,this.state.categories.index)
             .then(res => {
                 console.log("TCL: getExpertsList -> res", res)
 
