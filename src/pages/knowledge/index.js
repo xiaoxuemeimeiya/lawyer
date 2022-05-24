@@ -67,6 +67,7 @@ class Index extends Component {
       isFirstLoding: true,
       /** 页码 */
       page: 1,
+      page1: 1,
       /** scroll-view 是否滚动到底部 */
       isScrollEnd: false,
       loading: false, // 加载中,
@@ -88,7 +89,7 @@ class Index extends Component {
   async getDataList() {
     this.getCategory()
     await this.getSwiper()
-    //this.getData()
+    this.getData()
     this.getoffline()
     this.getExpretListData()
     this.live()
@@ -221,8 +222,57 @@ class Index extends Component {
       })
   }
 
+    getData() {console.log(this.state.isScrollEnd)
+        if (this.state.isScrollEnd) return
+        return getOnline(this.state.page1)
+            .then(res => {
+                console.log("TCL: getExpertsList -> res", res)
+
+                // 判断是否到底
+                if (res.data.course && res.data.course.length >= 15) {
+                    this.setState({ isScrollEnd: false })
+                } else {
+                    this.setState({ isScrollEnd: true })
+                }
+
+                // 专家列表数据
+                if (this.state.page1 == 1) {
+                    // 首次请求
+                    this.setState({
+                        courseList: res.data.course,
+                        page1: 2 // 默认为1,这里 1+1
+                    })
+                } else {
+                    // 非首次请求
+                    this.setState(
+                        {
+                            courseList: [...this.state.courseList, ...res.data.course],
+                            page1: this.state.page1 + 1
+                        },
+                        () => {console.log(this.state.courseList)
+                            console.log(
+                                "TCL: getExpertsList -> this.state.page",
+                                this.state.page1
+                            )
+                        }
+                    )
+                }
+
+                // 取消显示首次loading
+                this.state.isFirstLoding && this.setState({ isFirstLoding: false })
+            })
+            .catch(err => {
+                Taro.showToast({
+                    title: err.msg ? err.msg : err + "", //提示的内容,
+                    icon: "none", //图标,
+                    duration: 2000, //延迟时间,
+                    mask: true //显示透明蒙层，防止触摸穿透,
+                })
+            })
+    }
 
   /** 专家课程 */
+  /*
   getData = () => {
     getOnline()
       .then(res => {
@@ -240,6 +290,7 @@ class Index extends Component {
         })
       })
   }
+  */
 
 
   /** 显示/隐藏底部菜单 */
@@ -253,7 +304,7 @@ class Index extends Component {
 
     this.setState({
       categories: { ...this.state.categories, index: value, showFooter: false },
-      page: 1,
+      page1: 1,
       isScrollEnd: false,
     }, () => {
       this.getData()
@@ -275,9 +326,16 @@ class Index extends Component {
     // 滚动到底时加载更多
     const $end = document.querySelector('.loadingio-spinner-spin-8dz5htwyiau')
     const $tabbar = document.querySelector('.tabbar')
-    if ($end) {
+    if ($end) {console.log(this.state.page1)
       if (!this.state.loading && document.body.clientHeight - $tabbar.offsetHeight - $end.offsetHeight + 10 > $end.getBoundingClientRect().top) {
-        this.setState({ loading: true }, () => { this.getoffline() })
+        this.setState({ loading: true }, () => {
+            if(this.state.categories.index != 0){
+
+                this.getData()
+            }else{
+                this.getoffline()
+            }
+        })
       }
     }
   }
