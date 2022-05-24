@@ -102,7 +102,7 @@ class Index extends Component {
         // 滚动到底时加载更多
         const $end = document.querySelector('.loadingio-spinner-spin-8dz5htwyiau')
         const $tabbar = document.querySelector('.tabbar')
-        if ($end) {
+        if ($end) {console.log(this.state.loading)
             if (!this.state.loading && document.body.clientHeight - $tabbar.offsetHeight - $end.offsetHeight + 10 > $end.getBoundingClientRect().top) {
                 this.setState({ loading: true }, () => { this.getData() })
             }
