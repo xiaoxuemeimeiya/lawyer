@@ -39,7 +39,6 @@ class Index extends Component {
     super(...arguments)
     this.state = {
       tabIndex: 0,
-      newyears:1,
       /** 邀请码 */
       code: '',
       id: "", // 线下详情id
@@ -68,7 +67,6 @@ class Index extends Component {
     }
     console.log(this.state.userInfo)
     this.getDataList()
-    await this.getTimestamp()
   }
 
   componentWillUnmount() {
@@ -82,19 +80,6 @@ class Index extends Component {
       }
   }
 
-  /**获取优惠时间时间**/
-  getTimestamp() { //把时间日期转成时间戳
-    //优惠开始时间(2021-01-08 23:59:59)
-    var starttime = (new Date('2021/01/28 00:00:00')).getTime() / 1000
-    var endtime = (new Date('2021/02/17 23:59:59')).getTime() / 1000
-    var time = (new Date()).getTime() / 1000
-    if(time >= starttime && time <= endtime){
-      //活动期间
-      this.setState({ newyears: 1 })
-    }else{
-      this.setState({ newyears: 0 })
-    }
-  }
 
   handleTabChage = value => {
     // 微信小程序环境中使用,H5环境请用下面一段代码
@@ -738,17 +723,6 @@ class Index extends Component {
 
             <View className='course-price videoVip'>
             <Text className='course-price__bd'> ¥{this.state.course.price}</Text>
-              {
-                /** 获取到个人数据 
-                 *  @parma userStore.userInfo.my_famous 是否已经领了两门课程
-                 */
-                0 == this.state.newyears && this.state.famous && this.state.userInfo.my_famous && this.state.userInfo.my_famous.length !== 2 ?
-                 ''
-                  :
-                  <View className='videoVip--status'>
-                  {/*<View className='label--freeForVip label--freeForVip--Discount'> 会员免费</View>*/}
-                  </View>
-              }
             </View>
 
 

@@ -181,9 +181,9 @@ class Index extends Component {
 
         // 判断是否到底
         if (res.data.offschool && res.data.offschool.length >= 15) {
-          this.setState({ isScrollEnd: false })
+          this.setState({ isScrollEnd: false,loading: false })
         } else {
-          this.setState({ isScrollEnd: true })
+          this.setState({ isScrollEnd: true,loading: true })
         }
 
         // 专家列表数据
@@ -224,15 +224,18 @@ class Index extends Component {
 
     getData() {console.log(this.state.isScrollEnd)
         if (this.state.isScrollEnd) return
-        return getOnline(this.state.page1)
+
+        return getOnline(this.state.page1,1,this.state.categories.index)
+
             .then(res => {
                 console.log("TCL: getExpertsList -> res", res)
 
                 // 判断是否到底
                 if (res.data.course && res.data.course.length >= 15) {
-                    this.setState({ isScrollEnd: false })
+                    this.setState({ isScrollEnd: false,loading: false })
                 } else {
-                    this.setState({ isScrollEnd: true })
+                    this.setState({ isScrollEnd: true,loading: true })
+
                 }
 
                 // 专家列表数据
@@ -303,8 +306,9 @@ class Index extends Component {
     if (value === this.state.categories.index) return
 
     this.setState({
-      categories: { ...this.state.categories, index: value, showFooter: false },
+      categories: { ...this.state.categories, index: value, showFooter: false,loading: false },
       page1: 1,
+      page: 1,
       isScrollEnd: false,
     }, () => {
       this.getData()
