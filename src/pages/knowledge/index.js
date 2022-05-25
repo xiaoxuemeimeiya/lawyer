@@ -233,6 +233,7 @@ class Index extends Component {
                     this.setState({ isScrollEnd: false,loading: false })
                 } else {
                     this.setState({ isScrollEnd: true,loading: true })
+
                 }
 
                 // 专家列表数据
@@ -327,7 +328,7 @@ class Index extends Component {
     // 滚动到底时加载更多
     const $end = document.querySelector('.loadingio-spinner-spin-8dz5htwyiau')
     const $tabbar = document.querySelector('.tabbar')
-    if ($end) {
+    if ($end) {console.log(this.state.page1)
       if (!this.state.loading && document.body.clientHeight - $tabbar.offsetHeight - $end.offsetHeight + 10 > $end.getBoundingClientRect().top) {
         this.setState({ loading: true }, () => {
             if(this.state.categories.index != 0){
