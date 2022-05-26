@@ -36,7 +36,7 @@ export function get_lian(data) {
  *
  */
 export function new_lian(data) {
-    return request.post('/weapp/newpay/new_lian', data)
+    return request.post('/weapp/newpay/vip', data)
 }
 /**
  * 链享会员7.5折课程

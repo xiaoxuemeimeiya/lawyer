@@ -252,7 +252,7 @@ class Index extends Component {
   }
 
   render() {
-    const tabList = [{ title: "线上课程" }, { title: "线下学院" }, { title: "链享卡" }]
+    const tabList = [{ title: "线上课程" }, { title: "线下学院" }, { title: "会员" }]
     const status = {
       '1': '待付款',
       '3': '已支付/待评价',

@@ -52,36 +52,17 @@ class Index extends Component {
 
   async componentDidMount() {
 
-    //await this.getVipPrice()
     await this.get_pervipPrice()
     await this.getverify()
 
     /** 信息更新 */
-    /*
-    if (this.state.userInfo && this.state.userInfo.headimgurl) {
-      const data = await this.props.userStore.getUserInfoAsync()
-      this.setState({
-        userInfo: data
-      }, () => {
-        if (this.state.userInfo.lian) {
-          //Taro.redirectTo({ url: '/pages/videoVip-index' })
-        }
-      })
-    }
-    */
-
-/*
-    couponList().then(res => {
-      this.setState({ couponList: res.data })
-    })
-    */
 
     this.state.isFirstLoding && this.setState({ isFirstLoding: false })
 
     Share({
       wx: {
-        title: '链链会员', // 分享标题
-        desc: `邀请您购买链链会员，课程享受7.5折，100元专属优惠券等权益！`, // 分享描述
+        title: '会员', // 分享标题
+        desc: `邀请您购买会员，课程享受7.5折，100元专属优惠券等权益！`, // 分享描述
         link: `${window.location.href}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
         imgUrl: `${this.props.userStore.imgUrl}share_experience_img.png`, // 分享图标
         success: function () {
@@ -91,12 +72,6 @@ class Index extends Component {
     })
   }
 
-  /** 获取vip价格 */
-  getVipPrice() {
-    return get_vipPrice().then(res => {
-      this.setState({ vipPrice: Number(res.data) })
-    })
-  }
 
   get_pervipPrice() {
     const type = this.$router.params.type ? this.$router.params.type : ''
@@ -171,8 +146,9 @@ class Index extends Component {
       })
       return false
     }
-    if (this.state.userInfo && this.state.userInfo.my_famous) {
+    if (this.state.userInfo) {
       //验证验证码
+      /*
       verity_code({ phone: this.state.data.phone,code: this.state.data.code }).then(res1 => {console.log(res1)
         Taro.showLoading({ mask: true })
         const share_id = this.$router.params.share_id ? this.$router.params.share_id : ''
@@ -219,6 +195,40 @@ class Index extends Component {
         })
         setTimeout(() => {
           res1.code === '13' && Taro.navigateTo({ url: '/pages/videoVip-index' })
+        }, 1000)
+      })
+      */
+      const type = this.$router.params.type ? this.$router.params.type : ''
+      new_lian({ id: type }).then(res => {
+        this.WeixinPay(res.data).then(result => {
+          setTimeout(() => {
+            Taro.navigateTo({ url: '/pages/videoVip-buy--success' })
+          }, 500)
+          Taro.showToast({
+            title: result.msg,
+            icon: result.code === 1 ? "success" : 'none', //图标,
+            duration: 500, //延迟时间,
+            mask: true //显示透明蒙层，防止触摸穿透,
+          }).catch(err => {
+            console.log(err)
+            Taro.showToast({
+              title: err.msg ? err.msg : String(err), //提示的内容,
+              icon: 'none', //图标,
+              duration: 1000, //延迟时间,
+              mask: true, //显示透明蒙层，防止触摸穿透,
+            })
+          })
+        })
+
+      }).catch((res) => {
+        Taro.showToast({
+          title: res.msg,
+          icon: res.code === 1 ? "success" : 'none', //图标,
+          duration: 2000, //延迟时间,
+          mask: true //显示透明蒙层，防止触摸穿透,
+        })
+        setTimeout(() => {
+          res.code === '13' && Taro.navigateTo({ url: '/pages/videoVip-index' })
         }, 1000)
       })
     } else {
@@ -276,10 +286,10 @@ class Index extends Component {
         <View>
          {/* 权益 */}
          <View className='sixPrivilege'>
-            <View className='buySubmit-title'>链链知迅</View>
+            <View className='buySubmit-title'>会员</View>
             <View className='buySubmit-list'>
               <Image className='img' src="https://lyhoss.oss-cn-qingdao.aliyuncs.com/miniapp/wx_img/lian-card.png" />
-              <Text className='text'>链链会员卡--链享卡</Text>
+              <Text className='text'>会员卡--链享卡</Text>
               <Text className='text-price'>￥{this.state.vipPrice}</Text>
             </View>
         </View>
@@ -295,19 +305,17 @@ class Index extends Component {
                 onChange={handleInput.bind(this, "data.phone")}
                 placeholder='请输入您的手机号码'
                     ></Input>
-    {
-      this.state.liked ?
-    <
-      View
-      onclick = {this.sms}
-      className = 'very-code' > 获取验证码 < /View>
-    :
-    <
-      View
-      className = 'very-code' > {this.state.count + 's'} < /View>
-    }
+    {/*
+                {
+                  this.state.liked ?
+                <View onclick = {this.sms} className = 'very-code' > 获取验证码 < /View>
+                :
+                <View className = 'very-code' > {this.state.count + 's'} < /View>
+                }
+                */}
             </View>
           </View>
+    {/*
           <View className='ll-cell content__bd'>
             <View className='ll-cell__hd content__label content__label--title'> 验证码 </View>
             <View className='ll-cell__bd'>
@@ -319,6 +327,7 @@ class Index extends Component {
               ></Input>
             </View>
           </View>
+          */}
         </View>
 
         {/* 底部栏 */}

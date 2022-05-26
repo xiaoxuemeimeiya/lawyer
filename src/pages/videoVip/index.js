@@ -108,7 +108,7 @@ class Index extends Component {
     })
   }
 
-  buyVipNext = () => {
+    payVIP = () => {
       var type = 1
       if(this.state.index == 1){
           //个人会员
@@ -120,91 +120,8 @@ class Index extends Component {
           //其他
           type = 3
       }
-      const share_id = this.$router.params.share_code ? this.$router.params.share_code : ''
-      if(share_id){
-          Taro.navigateTo({ url: '/pages/videoVip-new-submit?type='+type+'&share_code='+share_id})
-      }else{
-          Taro.navigateTo({ url: '/pages/videoVip-new-submit?type='+type})
-      }
+      Taro.navigateTo({ url: '/pages/videoVip-new-submit?type='+type})
   }
-
-  buyVip = () => {
-    // 确认是否登陆
-    if (this.state.userInfo && this.state.userInfo.my_famous) {
-      Taro.showLoading({ mask: true })
-      const share_id = this.$router.params.share_id ? this.$router.params.share_id : ''
-      get_lian({ total_fee: this.state.vipPrice,code:share_id }).then(res => {
-        this.WeixinPay(res.data).then(result => {
-          setTimeout(() => {
-            Taro.navigateTo({ url: '/pages/videoVip-buy--success' })
-          }, 500)
-          Taro.showToast({
-            title: result.msg,
-            icon: result.code === 1 ? "success" : 'none', //图标,
-            duration: 500, //延迟时间,
-            mask: true //显示透明蒙层，防止触摸穿透,
-          }).catch(err => {
-            console.log(err)
-            Taro.showToast({
-              title: err.msg ? err.msg : String(err), //提示的内容, 
-              icon: 'none', //图标, 
-              duration: 1000, //延迟时间, 
-              mask: true, //显示透明蒙层，防止触摸穿透, 
-            })
-          })
-        })
-
-      }).catch((res) => {
-        Taro.showToast({
-          title: res.msg,
-          icon: res.code === 1 ? "success" : 'none', //图标,
-          duration: 2000, //延迟时间,
-          mask: true //显示透明蒙层，防止触摸穿透,
-        })
-        setTimeout(() => {
-          res.code === '13' && Taro.navigateTo({ url: '/pages/videoVip-index' })
-        }, 1000)
-      })
-    } else {
-      setCookie("Prev_URL", window.location.href)
-      Taro.navigateTo({ url: "/pages/author" })
-    }
-  }
-
-  /** 微信支付 */
-  WeixinPay(obj) {
-    return new Promise((resolve, reject) => {
-      function onBridgeReady() {
-        WeixinJSBridge.invoke("getBrandWCPayRequest", obj, function (res) {
-          if (res.err_msg == "get_brand_wcpay_request:ok") {
-            // 使用以上方式判断前端返回,微信团队郑重提示：
-            //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
-            return resolve()
-          } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
-            return reject('已取消支付')
-          } else {
-            return reject('支付失败')
-          }
-        })
-      }
-
-      if (typeof WeixinJSBridge == "undefined") {
-        if (document.addEventListener) {
-          document.addEventListener("WeixinJSBridgeReady", onBridgeReady, false)
-        } else if (document.attachEvent) {
-          document.attachEvent("WeixinJSBridgeReady", onBridgeReady)
-          document.attachEvent("onWeixinJSBridgeReady", onBridgeReady)
-        }
-      } else {
-        onBridgeReady()
-      }
-    })
-  }
-
-    choiceVip = index => {
-        this.setState({ index: index })
-        console.log(index)
-    }
 
     /**
      * 参数校验器
@@ -366,7 +283,7 @@ class Index extends Component {
                       </View>
                   </View>
                   <View className="ll-cell__ft">
-                      <View className="btn btn-buy" bindtap="payVIP">立即开通</View>
+                      <View className="btn btn-buy" onClick={this.payVIP}>立即开通</View>
                   </View>
               </View>
           </View>
