@@ -1,0 +1,124 @@
+@import "../../styles/var.scss";
+/* 名家学堂 */
+.group {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #ecedee;
+  padding-top: 24px;
+}
+.group {
+  position: relative;
+  .media__img {
+    width: 100px;
+    height: 100px;
+  }
+  .media__small {
+    padding-top: 12px;
+    margin-bottom:0;
+  }
+  .school__ft {
+    position: absolute;
+    left: 268px;
+    bottom: 28px;
+    .price {
+      color: $__color-primary;
+      font-size: $__font-size-medium;
+      font-weight: bold;
+    }
+    .price--active {
+      font-size: 30px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #E82E23;
+    }
+    .info {
+      font-size: $__font-size-medium;
+      color: #d19566;
+    }
+  }
+  .media {
+    .icon_audio{
+      width:90px;
+      height:32px;
+      position:absolute;
+      top:20px;
+      z-index:99;
+    }
+    .ll-cell__bd {
+      position: relative;
+      height: 100px;
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+      .media__title{
+        font-size:28px;
+        margin-bottom:0;
+      }
+      .icon-left {
+        //margin-bottom: 20px;
+        .media__img {
+          width: 22px;
+          height: 18px;
+        }
+        .label--freeIcon {
+          float:right;
+          font-size: 20px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          background: rgb(182, 12, 12);
+          border-radius:24px;
+          width:100px;
+          height:48px;
+          line-height:48px;
+          text-align:center;
+          color:#fff;
+          img{
+            width:100%;
+          }
+        }
+        span {
+          font-size: 24px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #8D8E9A;
+        }
+      }
+    }
+  }
+}
+.n-display{display:none;}
+.label--freeForVip--active {
+  font-size: 24px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #8D8E9A;
+}
+.price--hot {
+  font-size: 28px;
+  padding-right: 12px;
+  font-family: DINAlternate-Bold, DINAlternate;
+  font-weight: bold;
+  color: rgba(214, 36, 25, 1);
+  line-height: 34px;
+}
+
+
+
+.label--freeForVip {
+  float:right;
+  margin-left:5px;
+  padding: 6px 6px;
+  margin-bottom: 0px;
+  background: rgba(249, 230, 211, 1);
+  box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  border: 1px solid rgba(237, 194, 150, 1);
+  font-size: 20px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(82, 49, 15, 1);
+  line-height: 30px;
+}

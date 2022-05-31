@@ -260,7 +260,7 @@ class Index extends Component {
                       <View className="price-change">
                           <View className="price color-primary">
                               ¥<Text className='price-bold'>
-                              <Text className={[this.state.index == 2 && "hide"]}>0.00</Text>
+                              <Text className={[this.state.index == 2 && "hide"]}>{this.state.priceList[0].price}</Text>
                               <Text className={[this.state.index == 1 && "hide"]}>{this.state.priceList[1].price}</Text>
                               </Text>/年
                           </View>

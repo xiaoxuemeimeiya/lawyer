@@ -64,7 +64,7 @@ class Index extends Component {
     // 判断是否链享会员 跳转到开通的页面还是未开通页面
     // 当不是链享会员的时候 却跳到了会员的详情页 就让他去购买页
     if (url === '/pages/videoVip-index' || url === '/pages/videoVip-buy') {
-      if (this.state.userInfo.lian > 0) {
+      if (this.state.userInfo.isVip > 0) {
         Taro.navigateTo({ url: '/pages/videoVip-index' })
       } else {
         //Taro.navigateTo({ url: '/pages/videoVip-buy' })
@@ -97,10 +97,10 @@ class Index extends Component {
             <View className={['tabbar__title', this.state.url.match('/pages/videoVip') ? '' : '']}>会员</View>
 
           </View>
-          <View onClick={this.tolink.bind(this, '/pages/my-course')} className='ll-cell__bd'>
+          <View onClick={this.tolink.bind(this, '/pages/supervisor')} className='ll-cell__bd'>
 
-            <View className={['icon', this.state.url === '/pages/my-course' ? 'icon-bottom-5b' : 'icon-bottom-5a']}></View>
-            <View className={['tabbar__title', this.state.url === '/pages/my-course' ? 'color-primary' : '']}>发需求</View>
+            <View className={['icon', this.state.url === '/pages/supervisor' ? 'icon-bottom-5b' : 'icon-bottom-5a']}></View>
+            <View className={['tabbar__title', this.state.url === '/pages/supervisor' ? 'color-primary' : '']}>发需求</View>
 
           </View>
           <View onClick={this.tolink.bind(this, '/pages/my')} className='ll-cell__bd'>

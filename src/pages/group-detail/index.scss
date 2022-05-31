@@ -1,0 +1,64 @@
+@import "../../styles/var.scss";
+
+.group-detail {
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  position: relative;
+  background: #fff;
+  .ll-cell::before{
+    border:none;
+  }
+ .group-title{
+   color:#666;
+   font-size:24px;
+ }
+ .group-service{
+   display:flex;
+   justify-content: space-between;
+   border:1px solid rgba(82,186,75,1);
+   margin:0 20px;
+   border-radius:10px;
+   .title{
+     color:rgba(82,186,75,1);
+     font-size:28px;
+   }
+   .right{
+     color:#999;
+   }
+ }
+ .group-progress{
+  color:#000;
+  font-size:28px;
+ }
+ .group-desc{
+   color:rgba(82,186,75,1);
+   font-size:24px;
+   padding-bottom:20px;
+ }
+ .group-desc:after{
+    border-bottom:1px solid #999;
+  }
+ .group-ercode{
+   width:400px;
+   height:400px;
+   margin:20px auto;
+   .qrcode{
+     width:100%;
+     height:100%;
+   }
+ }
+ .group-operate{
+   text-align:center;
+   font-size:28px;
+ }
+ .group-operate-ercode{
+  width:600px;
+  margin:20px auto;
+  .operate-qrcode{
+    width:100%;
+    height:100%;
+  }
+ }
+}
+

@@ -15,6 +15,15 @@ const request = new Request()
 }
 
 /**
+ * 
+ * @param {*} us_id 
+ * @returns 
+ */
+export function need(data){
+  return request.post('/miniapp/need/commit', data)
+}
+
+/**
  * 专家主页详细信息
  *
  * @export

@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     NODE_ENV: '"production"',
-    API:'"//zhihq.mylyh.com"'
+    API:'"//admin.zhbig.com.cn/"'
   },
   defineConstants: {
   },

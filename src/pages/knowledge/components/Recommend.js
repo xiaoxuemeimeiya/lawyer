@@ -93,7 +93,7 @@ class Index extends Component {
               <View className='color-text-regular'>线下活动</View>
             </Navigator>
             <Navigator
-              url='/pages/social-list'
+              url='/pages/group'
               className='ll-cell__bd'
             >
               <View className='icon icon-online-classify'></View>

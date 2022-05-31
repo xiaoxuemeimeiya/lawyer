@@ -102,7 +102,7 @@ const config = {
     },
     devServer: {
       port: 80,
-      host: 'lay.mylyh.com',
+      host: 'lay.zhbig.com.cn',
       // port: 800,
       // host: '192.168.137.1',
       // proxy: {

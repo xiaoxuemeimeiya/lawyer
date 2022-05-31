@@ -97,6 +97,8 @@ class App extends Component {
       'pages/member-card',
       'pages/expert-list',
       'pages/social-list',
+      'pages/group',
+      'pages/group-detail'
     ],
     window: {
       backgroundTextStyle: 'light',

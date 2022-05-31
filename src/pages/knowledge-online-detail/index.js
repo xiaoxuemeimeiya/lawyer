@@ -388,7 +388,7 @@ class Index extends Component {
   /** 购买
    * @videoId 当前点击的item对应的视频ID
    */
-  showBottom = async (videoId) => {console.log(7877879)
+  showBottom = async (videoId) => {
     const { isLogin } = this.props.loginStore
     if (!isLogin) {
       checkReg()
@@ -396,75 +396,39 @@ class Index extends Component {
     }
 
     // 判断是否免费或者是否对俱乐部会员免费开放
-    if (+this.state.course.price === 0 || (this.state.course.type === 1 && this.state.userInfo.lian)) {
-      if(this.state.course.is_active === 1 && this.state.userInfo.lian_type === 2){
-        if(this.state.course.is_adv == 1){
-          /*
-          Taro.navigateTo({
-            url: '/pages/video-success'
-          })
-          */
-          window.location.href = this.state.course.redirect_url
-        }else {
-          if (this.state.course.part_list[0]['video'] == 2) {
-            voice.saveVoiceInfo(this.state.course, this.state.course.part_list, 0)
-            //voice.isShowPlayer()
-            //音频
-            Taro.navigateTo({
-              url: '/pages/videoDetail'
-            })
-          } else {
-            Taro.navigateTo({
-              url: '/pages/knowledge-video?id=' + this.state.id
-            })
-          }
-        }
-        return
-      }else if(this.state.course.is_active === 0){
-        if (this.state.course.part_list[0]['video'] == 2) {
-          voice.saveVoiceInfo(this.state.course, this.state.course.part_list, 0)
-          //voice.isShowPlayer()
-          //音频
-          Taro.navigateTo({
-            url: '/pages/videoDetail'
-          })
-        } else {
-          Taro.navigateTo({
-            url: '/pages/knowledge-video?id=' + this.state.id
-          })
-        }
-        return
+    if (+this.state.course.price === 0 || (this.state.course.type === 1 && this.state.userInfo.isVIP)) {
+      if (this.state.course.part_list[0]['video'] == 2) {
+        voice.saveVoiceInfo(this.state.course, this.state.course.part_list, 0)
+        //voice.isShowPlayer()
+        //音频
+        Taro.navigateTo({
+          url: '/pages/videoDetail'
+        })
+      } else {
+        Taro.navigateTo({
+          url: '/pages/knowledge-video?id=' + this.state.id
+        })
       }
+      return
     }
-
 
     /** 购买课程后 返回来页面没有刷新, 需要检测一下是否已经支付,已支付的纸条跳转到课程页面 */
     Taro.showLoading({ mask: true })
     await this.updateCourseData()
 
     if (this.state.userInfo.isVIP || this.state.course.pay_type == 1 || this.state.course.pay_type == 2 || this.state.course.pay_type == 3) {
-      if(this.state.course.is_adv == 1){
-        /*
-         Taro.navigateTo({
-           url: '/pages/video-success'
-         })
-         */
-        window.location.href = this.state.course.redirect_url
-      }else{
-        if(this.state.course.part_list[0]['video'] == 2){
-          voice.saveVoiceInfo(this.state.course, this.state.course.part_list, 0)
-          //voice.isShowPlayer()
-          //音频
-          Taro.navigateTo({
-            url: '/pages/videoDetail'
-          })
-        }else {
-          Taro.navigateTo({
-            url: `/pages/knowledge-video?id=${this.state.id}&videoId=${videoId}`
-          })
-        }
+      if(this.state.course.part_list[0]['video'] == 2){
+        voice.saveVoiceInfo(this.state.course, this.state.course.part_list, 0)
+        //voice.isShowPlayer()
+        //音频
+        Taro.navigateTo({
+          url: '/pages/videoDetail'
+        })
+      }else {
+        Taro.navigateTo({
+          url: `/pages/knowledge-video?id=${this.state.id}&videoId=${videoId}`
+        })
       }
-
       return
     } else if (this.state.course.pay_type == 0) {
       // 更新一下用户信息 余额信息
@@ -479,7 +443,7 @@ class Index extends Component {
   }
 
   //会员免费
-  showBottom1 = async (videoId) => {console.log(312321)
+  showBottom1 = async (videoId) => {
     const { isLogin } = this.props.loginStore
     if (!isLogin) {
       checkReg()
@@ -487,32 +451,21 @@ class Index extends Component {
     }
 
     // 判断是否免费或者是否对俱乐部会员免费开放
-    if (+this.state.course.price === 0 || (this.state.course.type === 1 && this.state.userInfo.lian)) {
-      //判断是否是直播课
-      if(this.state.course.is_adv == 1){
-        //跳转到小鹅通
-        /*
-         Taro.navigateTo({
-           url: '/pages/video-success'
-         })
-         */
-        window.location.href = this.state.course.redirect_url
-        return
+    if (+this.state.course.price === 0 || (this.state.course.type === 1 && this.state.userInfo.isVIP)) {
+      if(this.state.course.part_list[0]['video'] == 2){
+        voice.saveVoiceInfo(this.state.course, this.state.course.part_list, 0)
+        //voice.isShowPlayer()
+        //音频
+        Taro.navigateTo({
+          url: '/pages/videoDetail'
+        })
       }else{
-        if(this.state.course.part_list[0]['video'] == 2){
-          voice.saveVoiceInfo(this.state.course, this.state.course.part_list, 0)
-          //voice.isShowPlayer()
-          //音频
-          Taro.navigateTo({
-            url: '/pages/videoDetail'
-          })
-        }else{
-          Taro.navigateTo({
-            url: '/pages/knowledge-video?id=' + this.state.id
-          })
-        }
-        return
+        Taro.navigateTo({
+          url: '/pages/knowledge-video?id=' + this.state.id
+        })
       }
+      return
+     
     }else{
       //弹框，让开通会员
       this.setState({ close: true})
@@ -624,21 +577,10 @@ class Index extends Component {
         showbuttonTip = true
         big = true
         return '立即学习'
-      } else if ( this.state.course.type === 1 && this.state.userInfo.lian) {
-        if(this.state.course.is_active === 1 && this.state.userInfo.lian_type === 2){
+      } else if ( this.state.course.type === 1 && this.state.userInfo.isVIP) {
           buttonTip1 = '会员免费学'
           big = true
           showbuttonTip1 = true
-        }else if(this.state.course.is_active === 0 ){
-          buttonTip1 = '会员免费学'
-          big = true
-          showbuttonTip1 = true
-        }else{
-          //不免费
-          big = true
-          showbuttonTip = true
-          return '季卡会员专享'
-        }
       }else {
         if(this.state.course.type === 1){
           buttonTip1 = '会员免费学'
@@ -689,7 +631,7 @@ class Index extends Component {
             <Image className='try-play' src={this.props.userStore.imgUrl + 'freeTry.png'}></Image>
             {this.state.course.part_list && this.state.course.part_list[0]['video'] == 2 &&
               <View className='try-playing-view hide'>
-                < Image
+                <Image
                 className = 'try-playing'
                 src = 'https://oss.mylyh.com/miniapp/versionv3.0/try-paying.gif' > < /Image>
                 <View className='try-text'>播放中...</View>
