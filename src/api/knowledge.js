@@ -91,6 +91,17 @@ export function getOnlineDetail(course_id, page) {
  * @param {*} page
  * @returns
  */
+export function limitOffline(page) {
+  return request.post("/miniapp/course/limit_offline", { page })
+}
+
+/**
+ * 知识模块-线下学院-列表
+ *
+ * @export
+ * @param {*} page
+ * @returns
+ */
 export function getOffline(page) {
   return request.post("/miniapp/course/offschool", { page })
 }

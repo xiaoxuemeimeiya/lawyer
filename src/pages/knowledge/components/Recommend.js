@@ -263,6 +263,9 @@ class Index extends Component {
               </View>
             </Navigator>
           ))}
+
+        {/* 查看更多 */}
+        <Navigator url='/pages/knowledge-offline-course' className='btn btn-more' style={{ marginTop : '0px' }}>查看更多</Navigator>
         </View>
 
         <View className='kefu'>

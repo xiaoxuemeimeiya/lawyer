@@ -12,7 +12,7 @@ import { AtTabs, AtActivityIndicator } from 'taro-ui'
 import { inject } from '@tarojs/mobx'
 //import voice from '@/src/components/musicPlayer'
 
-import { getKnowledge, getOnline, getMonths, getFamous,getOffline } from "../../api/knowledge"
+import { getKnowledge, getOnline, getMonths, limitOffline,getOffline } from "../../api/knowledge"
 import { getCategory, getExpretList,alive,course_cat,careGzh,live,scan } from "../../api/expert"
 import { handleInput } from "../../utils/util"
 import { onScrollToLower } from "../../utils/scroll"
@@ -64,7 +64,7 @@ class Index extends Component {
       },
 
       /** 是否首次加载数据 */
-      isFirstLoding: true,
+      //isFirstLoding: true,
       /** 页码 */
       page: 1,
       page1: 1,
@@ -172,7 +172,19 @@ class Index extends Component {
       })
   }
 
+    /** 专家的服务列表 */
+    getoffline() {
+        limitOffline().then(res => {
+            // 限制6个显示
+            this.setState({
+                offline: res.data,
+                isScrollEnd: true,
+                loading: true,
+            })
+        })
+    }
 
+  /*
   getoffline() {
     if (this.state.isScrollEnd) return
     return getOffline(this.state.page)
@@ -221,6 +233,7 @@ class Index extends Component {
         })
       })
   }
+  */
 
     getData() {console.log(this.state.isScrollEnd)
         if (this.state.isScrollEnd) return
@@ -328,14 +341,14 @@ class Index extends Component {
     // 滚动到底时加载更多
     const $end = document.querySelector('.loadingio-spinner-spin-8dz5htwyiau')
     const $tabbar = document.querySelector('.tabbar')
-    if ($end) {console.log(this.state.page1)
+    if ($end) {
       if (!this.state.loading && document.body.clientHeight - $tabbar.offsetHeight - $end.offsetHeight + 10 > $end.getBoundingClientRect().top) {
         this.setState({ loading: true }, () => {
             if(this.state.categories.index != 0){
-
                 this.getData()
             }else{
-                this.getoffline()
+                //this.getoffline()
+                this.setState({ isFirstLoding: false,isScrollEnd: true,loading: false  })
             }
         })
       }
