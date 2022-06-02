@@ -237,3 +237,11 @@ export function live(type,page){
 export function group(page){
     return request.post('/miniapp/adv/group',{page})
 }
+
+/**
+ * 企业群详情
+ * @param {*} page
+ */
+export function groupDetail(id){
+    return request.post('/miniapp/adv/group_detail',{id})
+}
