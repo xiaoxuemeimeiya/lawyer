@@ -18,6 +18,15 @@
   .media__small {
     padding-top: 12px;
     margin-bottom:0;
+    display:flex;
+    .list{
+      margin-right:10px;
+      border:1px solid #ddd;
+      border-radius: 5px;
+      padding:0 10px;
+      height:30px;
+      line-height:30px;
+    }
   }
   .school__ft {
     position: absolute;

@@ -2,7 +2,7 @@ import Taro, { Component } from "@tarojs/taro"
 import { View, ScrollView, Image, Navigator, Text } from "@tarojs/components"
 
 import { AtActivityIndicator } from "taro-ui"
-import {getOnline} from "../../api/knowledge"
+import {group} from "../../api/knowledge"
 import {member_reccommend,ActiveList} from "../../api/videoVip"
 import { onScrollToLower } from "../../utils/scroll"
 import ScrollEnd from "../../components/ScrollEnd"
@@ -48,12 +48,12 @@ class Index extends Component {
     getData() {
         if (this.state.isScrollEnd) return
 
-        return getOnline(this.state.page, 1)
+        return group(this.state.page)
             .then(res => {
                 console.log("TCL: getExpertsList -> res", res)
 
                 // 判断是否到底
-                if (res.data.course && res.data.course.length >= 15) {
+                if (res.data && res.data.length >= 15) {
                     this.setState({ isScrollEnd: false })
                 } else {
                     this.setState({ isScrollEnd: true })
@@ -63,7 +63,7 @@ class Index extends Component {
                 if (this.state.page == 1) {
                     // 首次请求
                     this.setState({
-                        dataList: res.data.course,
+                        dataList: res.data,
                         page: 2 // 默认为1,这里 1+1
                     })
                     console.log(777777)
@@ -71,7 +71,7 @@ class Index extends Component {
                     // 非首次请求
                     this.setState(
                         {
-                            dataList: [...this.state.dataList, ...res.data.course],
+                            dataList: [...this.state.dataList, ...res.data],
                             page: this.state.page + 1
                         },
                         () => {
@@ -130,7 +130,7 @@ class Index extends Component {
             >
               <View className='ll-cell ll-cell--primary media__bd'>
                 <View className='ll-cell__hd'>
-                  <Image className='icon_audio' src={item.video == 2 ? 'https://oss.mylyh.com/miniapp/versionv3.0/icon_audio%402x.png' : 'https://oss.mylyh.com/miniapp/versionv3.0/icon_audio1%402x.png'}></Image>
+                  <Image className='icon_audio' src='https://oss.mylyh.com/miniapp/versionv3.0/icon_audio%402x.png'></Image>
                   <Image
                     className='media__img'
                     src={
@@ -142,7 +142,11 @@ class Index extends Component {
                 <View className='ll-cell__bd'>
                     <View className='icon-title'>
                         <View className='media__title ellipsis-2'>{item.name}</View>
-                        <View className='media__small'>{item.us_regist_name + "·" + item.category}</View>
+                        <View className='media__small'>
+                            {item.cat && item.cat.map(item1 => (
+                            <View className='list'>{item1}</View>
+                            ))}
+                        </View>
                     </View>
                     <View className='icon-left'>
                         <View className='label--freeIcon'>加群</View>

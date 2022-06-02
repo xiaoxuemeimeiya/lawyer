@@ -229,3 +229,11 @@ export function commentFocuson(comment_id,action) {
 export function live(type,page){
   return request.post('/miniapp/adv/index',{type,page})
 }
+
+/**
+ * 企业群
+ * @param {*} page
+ */
+export function group(page){
+    return request.post('/miniapp/adv/group',{page})
+}
