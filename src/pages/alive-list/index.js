@@ -125,7 +125,7 @@ class Index extends Component {
                 {item['res'].map((itemName,index) => (
                   <View className='ll-cells ll-cell--noborder' key={itemName.id}  onClick={this.aliveYuyue.bind( this,itemName.id,itemName.status,itemName.link,itemName.form)}>
                     {index !=0 &&(<View className='top-line'></View>)}
-                    <View className='media-title'><View className='comma'></View>{itemName.opentime}</View>
+                    <View className='media-title'><View className='comma'></View>{itemName.opennpmtime}</View>
                     {index+1 < item['res'].length &&(<View className='line'></View>)}
                     <View className='ll-cell ll-cell--primary media__bd'>
                       <View className='ll-cell__hd alive-list'>
