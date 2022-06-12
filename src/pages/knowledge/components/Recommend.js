@@ -152,6 +152,7 @@ class Index extends Component {
       </View>
 
         {/* 专家服务 */}
+        {/*
         <View className='section expert'>
           <View className='section__hd'>
             <View className='title'>企业服务</View>
@@ -179,9 +180,10 @@ class Index extends Component {
             }
           </View>
 
-          {/* 查看更多 */}
+         
           <Navigator url='/pages/single-list?type=expert' className='btn btn-more mt0' style={{ marginTop : '0px' }}>查看更多</Navigator>
         </View>
+          */}
 
         {/* 线下学院 */}
         <View className='section'>
